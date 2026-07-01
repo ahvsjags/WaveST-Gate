@@ -1,0 +1,117 @@
+{
+  "generated_at_utc": "2026-06-05T06:11:32.990592+00:00",
+  "overall_status": "passed",
+  "bundle_integrity_status": "passed",
+  "doi_status": "published",
+  "num_failures": 0,
+  "num_warnings": 0,
+  "bundle_manifest_path": "results/nature_release/release_bundle_manifest.json",
+  "bundle_path": "results/nature_release/wavestgate_submission_evidence_v0.1.0.tar.gz",
+  "bundle_bytes": 104284966,
+  "bundle_sha256": "dd849c78a8b90d9ae8f5d1a9f470ee3c27dd80e23117db97468ae38d8426b24f",
+  "tar_member_count": 617,
+  "upload_manifest_rows": 615,
+  "critical_artifacts_checked": 73,
+  "upload_manifest_missing": [],
+  "upload_manifest_hash_mismatch": [],
+  "critical_artifacts_missing": [],
+  "critical_artifact_hash_mismatch": [],
+  "checks": [
+    {
+      "name": "bundle_manifest_exists",
+      "status": "pass",
+      "detail": "Read results/nature_release/release_bundle_manifest.json.",
+      "metric": ""
+    },
+    {
+      "name": "bundle_exists",
+      "status": "pass",
+      "detail": "Found results/nature_release/wavestgate_submission_evidence_v0.1.0.tar.gz.",
+      "metric": ""
+    },
+    {
+      "name": "bundle_bytes_match",
+      "status": "pass",
+      "detail": "Bundle byte size matches manifest.",
+      "metric": "expected=104284966; actual=104284966"
+    },
+    {
+      "name": "bundle_sha256_match",
+      "status": "pass",
+      "detail": "Bundle SHA256 matches manifest.",
+      "metric": "expected=dd849c78a8b90d9ae8f5d1a9f470ee3c27dd80e23117db97468ae38d8426b24f; actual=dd849c78a8b90d9ae8f5d1a9f470ee3c27dd80e23117db97468ae38d8426b24f"
+    },
+    {
+      "name": "tar_readable",
+      "status": "pass",
+      "detail": "Bundle tarball is readable.",
+      "metric": "members=617"
+    },
+    {
+      "name": "upload_manifest_in_bundle",
+      "status": "pass",
+      "detail": "Upload manifest is present in the bundle.",
+      "metric": "results/nature_release/release_upload_manifest.csv"
+    },
+    {
+      "name": "zenodo_metadata_in_bundle",
+      "status": "pass",
+      "detail": "Zenodo metadata is present in the bundle.",
+      "metric": "results/nature_release/zenodo_metadata.json"
+    },
+    {
+      "name": "upload_manifest_row_count",
+      "status": "pass",
+      "detail": "Upload manifest row count matches release manifest.",
+      "metric": "expected=615; actual=615"
+    },
+    {
+      "name": "upload_manifest_members_present",
+      "status": "pass",
+      "detail": "All upload manifest files are present in the tarball.",
+      "metric": "missing=0"
+    },
+    {
+      "name": "upload_manifest_member_hashes",
+      "status": "pass",
+      "detail": "All upload manifest member byte sizes and SHA256 hashes match.",
+      "metric": "mismatch=0"
+    },
+    {
+      "name": "critical_artifacts_present",
+      "status": "pass",
+      "detail": "All critical artifacts are present and marked bundled.",
+      "metric": "missing=0"
+    },
+    {
+      "name": "critical_artifact_hashes",
+      "status": "pass",
+      "detail": "All critical artifact byte sizes and SHA256 hashes match tar members.",
+      "metric": "mismatch=0"
+    },
+    {
+      "name": "deposition_result_exists",
+      "status": "pass",
+      "detail": "Read results/nature_release/zenodo_deposition_result.json.",
+      "metric": ""
+    },
+    {
+      "name": "deposition_bundle_matches_manifest",
+      "status": "pass",
+      "detail": "Deposition dry-run/result references the same bundle path, byte size, and SHA256.",
+      "metric": "release_status=zenodo_published"
+    },
+    {
+      "name": "zenodo_doi_recorded",
+      "status": "pass",
+      "detail": "Zenodo DOI and deposition id are recorded.",
+      "metric": "release_status=zenodo_published; doi=10.5281/zenodo.20550855; zenodo_deposition_id=20550855"
+    },
+    {
+      "name": "zenodo_release_published",
+      "status": "pass",
+      "detail": "Zenodo release is published and publicly accessible.",
+      "metric": "release_status=zenodo_published"
+    }
+  ]
+}

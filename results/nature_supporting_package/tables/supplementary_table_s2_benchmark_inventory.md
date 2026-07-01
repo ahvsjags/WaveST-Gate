@@ -1,0 +1,18 @@
+# Supplementary Table S2. Xenium-to-Visium benchmark inventory
+
+Source: `results/nature_benchmark_datasheet`
+
+| item                        | value                             |
+|:----------------------------|:----------------------------------|
+| protocol                    | xenium_to_visium_spot_aggregation |
+| num_spots                   | 4992                              |
+| num_cells                   | 115275                            |
+| num_cell_types              | 19                                |
+| num_spots_with_ground_truth | 485                               |
+| spot_radius                 | 55.0                              |
+| split_test_spots            | 749                               |
+| split_test_gt_spots         | 77                                |
+| split_train_spots           | 3494                              |
+| split_train_gt_spots        | 408                               |
+| split_val_spots             | 749                               |
+| split_val_gt_spots          | 0                                 |

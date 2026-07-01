@@ -1,0 +1,119 @@
+{
+  "generated_at_utc": "2026-06-05T06:09:35.744267+00:00",
+  "api_base": "https://zenodo.org",
+  "sandbox": false,
+  "publish_requested": true,
+  "reserve_doi_requested": true,
+  "bundle_manifest_path": "results/nature_release/release_bundle_manifest.json",
+  "metadata_path": "results/nature_release/zenodo_metadata.json",
+  "bundle_path": "results/nature_release/wavestgate_submission_evidence_v0.1.0.tar.gz",
+  "bundle_bytes": 104284966,
+  "bundle_sha256": "dd849c78a8b90d9ae8f5d1a9f470ee3c27dd80e23117db97468ae38d8426b24f",
+  "zenodo_deposition_result": "results/nature_release/zenodo_deposition_result.json",
+  "release_status": "zenodo_published",
+  "doi": "10.5281/zenodo.20550855",
+  "zenodo_deposition_id": "20550855",
+  "zenodo_record_url": "https://zenodo.org/records/20550855",
+  "zenodo_bucket_url": "https://zenodo.org/api/files/0b506de9-e805-44bd-8523-00a01a3de0ff",
+  "upload_response": {
+    "created": "2026-06-05T06:09:38.333152+00:00",
+    "updated": "2026-06-05T06:11:02.726243+00:00",
+    "version_id": "b3c9762a-3f01-4201-ae67-ef1661ff5627",
+    "key": "wavestgate_submission_evidence_v0.1.0.tar.gz",
+    "size": 104284966,
+    "mimetype": "application/gzip",
+    "checksum": "md5:0fa7521cefe75266c83cba165241e373",
+    "is_head": true,
+    "delete_marker": false,
+    "links": {
+      "self": "https://zenodo.org/api/files/0b506de9-e805-44bd-8523-00a01a3de0ff/wavestgate_submission_evidence_v0.1.0.tar.gz",
+      "version": "https://zenodo.org/api/files/0b506de9-e805-44bd-8523-00a01a3de0ff/wavestgate_submission_evidence_v0.1.0.tar.gz?version_id=b3c9762a-3f01-4201-ae67-ef1661ff5627",
+      "uploads": "https://zenodo.org/api/files/0b506de9-e805-44bd-8523-00a01a3de0ff/wavestgate_submission_evidence_v0.1.0.tar.gz?uploads=1"
+    }
+  },
+  "deposition_response": {
+    "created": "2026-06-05T06:11:03.567225+00:00",
+    "modified": "2026-06-05T06:11:03.817569+00:00",
+    "id": 20550855,
+    "conceptrecid": "20550854",
+    "doi": "10.5281/zenodo.20550855",
+    "conceptdoi": "10.5281/zenodo.20550854",
+    "doi_url": "https://doi.org/10.5281/zenodo.20550855",
+    "metadata": {
+      "title": "WaveST-Gate: Xenium-to-Visium Breast Cancer Spatial Deconvolution Benchmark and Evidence",
+      "doi": "10.5281/zenodo.20550855",
+      "publication_date": "2026-06-05",
+      "description": "WaveST-Gate release package for a reproducible Xenium-to-Visium breast cancer spatial deconvolution benchmark, reliability-calibrated multimodal model evidence, baseline comparisons, ablations, boundary analysis, niche interpretation, external generalization summaries, and robustness statistics.",
+      "access_right": "open",
+      "creators": [
+        {
+          "name": "WaveST-Gate contributors",
+          "affiliation": null
+        }
+      ],
+      "keywords": [
+        "spatial transcriptomics",
+        "Xenium",
+        "Visium",
+        "breast cancer",
+        "deconvolution",
+        "multimodal learning",
+        "reliability calibration"
+      ],
+      "related_identifiers": [
+        {
+          "identifier": "10.5281/zenodo.4739739",
+          "relation": "cites",
+          "resource_type": "dataset",
+          "scheme": "doi"
+        }
+      ],
+      "version": "0.1.0",
+      "license": "mit-license",
+      "imprint_publisher": "Zenodo",
+      "notes": "This metadata is ready for a Zenodo deposition draft. A real DOI is only created after uploading the bundle and publishing/reserving a DOI through Zenodo.",
+      "upload_type": "software",
+      "prereserve_doi": {
+        "doi": "10.5281/zenodo.20550855",
+        "recid": 20550855
+      }
+    },
+    "title": "WaveST-Gate: Xenium-to-Visium Breast Cancer Spatial Deconvolution Benchmark and Evidence",
+    "links": {
+      "self": "https://zenodo.org/api/records/20550855",
+      "html": "https://zenodo.org/records/20550855",
+      "doi": "https://doi.org/10.5281/zenodo.20550855",
+      "parent_doi": "https://doi.org/10.5281/zenodo.20550854",
+      "badge": "https://zenodo.org/badge/doi/10.5281%2Fzenodo.20550855.svg",
+      "conceptbadge": "https://zenodo.org/badge/doi/10.5281%2Fzenodo.20550854.svg",
+      "files": "https://zenodo.org/api/records/20550855/files",
+      "bucket": "https://zenodo.org/api/files/0b506de9-e805-44bd-8523-00a01a3de0ff",
+      "latest_draft": "https://zenodo.org/api/deposit/depositions/20550855",
+      "latest_draft_html": "https://zenodo.org/deposit/20550855",
+      "publish": "https://zenodo.org/api/deposit/depositions/20550855/actions/publish",
+      "edit": "https://zenodo.org/api/deposit/depositions/20550855/actions/edit",
+      "discard": "https://zenodo.org/api/deposit/depositions/20550855/actions/discard",
+      "newversion": "https://zenodo.org/api/deposit/depositions/20550855/actions/newversion",
+      "record": "https://zenodo.org/api/records/20550855",
+      "record_html": "https://zenodo.org/record/20550855",
+      "latest": "https://zenodo.org/api/records/20550855/versions/latest",
+      "latest_html": "https://zenodo.org/records/20550855/latest"
+    },
+    "record_id": 20550855,
+    "owner": 1664939,
+    "files": [
+      {
+        "id": "31e4020e-aafd-4351-a1d9-d7460e74ae3a",
+        "filename": "wavestgate_submission_evidence_v0.1.0.tar.gz",
+        "filesize": 104284966,
+        "checksum": "0fa7521cefe75266c83cba165241e373",
+        "links": {
+          "self": "https://zenodo.org/api/records/20550855/files/31e4020e-aafd-4351-a1d9-d7460e74ae3a",
+          "download": "https://zenodo.org/api/records/20550855/draft/files/wavestgate_submission_evidence_v0.1.0.tar.gz/content"
+        }
+      }
+    ],
+    "state": "done",
+    "submitted": true
+  }
+}

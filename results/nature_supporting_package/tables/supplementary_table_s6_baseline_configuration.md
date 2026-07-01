@@ -1,0 +1,18 @@
+# Supplementary Table S6. Baseline configuration and protocol
+
+Source: `results/nature_main/cytassist_rep2_radius55/baseline_comparison/baseline_comparison_manifest.json`
+
+| field                  | value                                                                                                                                                                                            |
+|:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| prepared_path          | data/processed/cytassist_xenium_rep2_common297/prepared_xenium_gt_radius55.pt                                                                                                                    |
+| model_metrics_path     | results/nature_main/cytassist_rep2_radius55/metrics.csv                                                                                                                                          |
+| model_predictions_path | results/nature_main/cytassist_rep2_radius55/predicted_proportions.csv                                                                                                                            |
+| simple_metrics_path    | results/nature_main/cytassist_rep2_radius55/simple_baselines/simple_baseline_metrics.csv                                                                                                         |
+| tangram_metrics_paths  | 2 entries                                                                                                                                                                                        |
+| baseline_metrics_paths | 7 entries                                                                                                                                                                                        |
+| num_evaluation_spots   | 4992                                                                                                                                                                                             |
+| split_mask_applied     | False                                                                                                                                                                                            |
+| permutations           | 10000                                                                                                                                                                                            |
+| seed                   | 13                                                                                                                                                                                               |
+| comparison_path        | results/nature_main/cytassist_rep2_radius55/baseline_comparison/baseline_comparison.csv                                                                                                          |
+| notes                  | Paired p-values use supervised Xenium-covered spots and test per-spot JSD differences against WaveST-Gate. Multi-sample mean/std remains required for the final submission-scale baseline panel. |

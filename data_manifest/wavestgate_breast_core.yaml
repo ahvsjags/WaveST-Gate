@@ -1,0 +1,189 @@
+dataset_id: wavestgate_breast_core
+description: >
+  Public data sources for the WaveST-Gate breast cancer benchmark. The primary
+  source is the 10x Genomics Janesick et al. human breast cancer Xenium/Visium
+  preview data, with companion GEO supplementary files from GSE243275.
+root_dir: data/raw/wavestgate_breast_core
+sources:
+  - name: 10x_janesick_preview_page
+    url: https://www.10xgenomics.com/products/xenium-in-situ/preview-dataset-human-breast
+  - name: 10x_companion_github
+    url: https://github.com/10XGenomics/janesick_nature_comms_2023_companion
+  - name: geo_janesick_super_series
+    url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE243280
+  - name: geo_xenium_subseries
+    url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE243168
+  - name: geo_scrna_visium_subseries
+    url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE243275
+items:
+  - id: xenium_rep1_outs
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_outs.zip
+    path: 10x/xenium_rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_outs.zip
+    expected_bytes: 9861155708
+    required: true
+    category: xenium
+    unpack: zip
+  - id: xenium_rep1_cell_type_annotations_10x
+    url: https://cdn.10xgenomics.com/raw/upload/v1695234604/Xenium%20Preview%20Data/Cell_Barcode_Type_Matrices.xlsx
+    path: 10x/xenium_rep1/Cell_Barcode_Type_Matrices.xlsx
+    expected_bytes: 9409803
+    required: true
+    category: annotations
+  - id: xenium_rep1_cell_type_annotations_geo
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE243nnn/GSE243275/suppl/GSE243275_Barcode_Cell_Type_Matrices.xlsx
+    path: geo/GSE243275/GSE243275_Barcode_Cell_Type_Matrices.xlsx
+    expected_bytes: 9409803
+    required: true
+    category: annotations
+  - id: visium_filtered_feature_matrix_h5
+    url: https://cf.10xgenomics.com/samples/spatial-exp/2.0.0/CytAssist_FFPE_Human_Breast_Cancer/CytAssist_FFPE_Human_Breast_Cancer_filtered_feature_bc_matrix.h5
+    path: 10x/visium/CytAssist_FFPE_Human_Breast_Cancer_filtered_feature_bc_matrix.h5
+    expected_bytes: 33301941
+    required: true
+    category: visium
+  - id: visium_spatial_bundle
+    url: https://cf.10xgenomics.com/samples/spatial-exp/2.0.0/CytAssist_FFPE_Human_Breast_Cancer/CytAssist_FFPE_Human_Breast_Cancer_spatial.tar.gz
+    path: 10x/visium/CytAssist_FFPE_Human_Breast_Cancer_spatial.tar.gz
+    expected_bytes: 34479952
+    required: true
+    category: visium
+    unpack: tar.gz
+  - id: xenium_rep1_gene_panel
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_gene_panel.json
+    path: 10x/xenium_rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_gene_panel.json
+    expected_bytes: 153839
+    required: false
+    category: xenium_metadata
+  - id: xenium_rep1_gene_groups
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_gene_groups.csv
+    path: 10x/xenium_rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_gene_groups.csv
+    expected_bytes: 6591
+    required: false
+    category: xenium_metadata
+  - id: xenium_rep1_panel
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_panel.tsv
+    path: 10x/xenium_rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_panel.tsv
+    expected_bytes: 11613
+    required: false
+    category: xenium_metadata
+  - id: xenium_rep1_analysis_summary
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_analysis_summary.html
+    path: 10x/xenium_rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_analysis_summary.html
+    expected_bytes: 11655240
+    required: false
+    category: xenium_metadata
+  - id: xenium_rep1_he_image
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_he_image.tif
+    path: 10x/xenium_rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_he_image.tif
+    expected_bytes: 1697535212
+    required: false
+    category: histology
+  - id: xenium_rep1_he_image_ome
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_he_image.ome.tif
+    path: 10x/xenium_rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_he_image.ome.tif
+    expected_bytes: 1427110955
+    required: false
+    category: histology
+  - id: xenium_rep1_he_alignment
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_he_imagealignment.csv
+    path: 10x/xenium_rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_he_imagealignment.csv
+    expected_bytes: 126
+    required: false
+    category: histology
+  - id: xenium_rep1_if_image
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_if_image.tif
+    path: 10x/xenium_rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_if_image.tif
+    expected_bytes: 417644708
+    required: false
+    category: immunofluorescence
+  - id: xenium_rep1_if_image_ome
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_if_image.ome.tif
+    path: 10x/xenium_rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_if_image.ome.tif
+    expected_bytes: 63643728
+    required: false
+    category: immunofluorescence
+  - id: xenium_rep1_if_alignment
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_if_imagealignment.csv
+    path: 10x/xenium_rep1/Xenium_FFPE_Human_Breast_Cancer_Rep1_if_imagealignment.csv
+    expected_bytes: 125
+    required: false
+    category: immunofluorescence
+  - id: xenium_rep2_outs
+    dataset: xenium_ffpe_human_breast_cancer_rep2
+    role: same_cohort_xenium_holdout
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_outs.zip
+    path: 10x/xenium_rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_outs.zip
+    expected_bytes: 8485773704
+    md5: d266097b3550b721cabbed942f88538d
+    required: true
+    category: xenium_holdout
+    unpack: zip
+  - id: xenium_rep2_gene_panel
+    dataset: xenium_ffpe_human_breast_cancer_rep2
+    role: same_cohort_xenium_holdout
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_gene_panel.json
+    path: 10x/xenium_rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_gene_panel.json
+    expected_bytes: 153839
+    md5: 9c0e828424fb41ff99a52e8fe99feb24
+    required: false
+    category: xenium_holdout_metadata
+  - id: xenium_rep2_gene_groups
+    dataset: xenium_ffpe_human_breast_cancer_rep2
+    role: same_cohort_xenium_holdout
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_gene_groups.csv
+    path: 10x/xenium_rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_gene_groups.csv
+    expected_bytes: 6591
+    md5: 934b96f493a72dd0424bee6fd7b143f5
+    required: false
+    category: xenium_holdout_metadata
+  - id: xenium_rep2_panel
+    dataset: xenium_ffpe_human_breast_cancer_rep2
+    role: same_cohort_xenium_holdout
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_panel.tsv
+    path: 10x/xenium_rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_panel.tsv
+    expected_bytes: 11613
+    md5: 24b22f15263af644b0cb0dcb5f89251b
+    required: false
+    category: xenium_holdout_metadata
+  - id: xenium_rep2_he_image
+    dataset: xenium_ffpe_human_breast_cancer_rep2
+    role: same_cohort_xenium_holdout
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_he_image.tif
+    path: 10x/xenium_rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_he_image.tif
+    expected_bytes: 1561265220
+    md5: d5ff58a019af2ce924fad03af02e887d
+    required: false
+    category: xenium_holdout_histology
+  - id: xenium_rep2_he_image_ome
+    dataset: xenium_ffpe_human_breast_cancer_rep2
+    role: same_cohort_xenium_holdout
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_he_image.ome.tif
+    path: 10x/xenium_rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_he_image.ome.tif
+    expected_bytes: 1248171731
+    md5: 7084e49c15ffd752929e6f4b416bbf28
+    required: true
+    category: xenium_holdout_histology
+  - id: xenium_rep2_he_alignment
+    dataset: xenium_ffpe_human_breast_cancer_rep2
+    role: same_cohort_xenium_holdout
+    url: https://cf.10xgenomics.com/samples/xenium/1.0.1/Xenium_FFPE_Human_Breast_Cancer_Rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_he_imagealignment.csv
+    path: 10x/xenium_rep2/Xenium_FFPE_Human_Breast_Cancer_Rep2_he_imagealignment.csv
+    expected_bytes: 124
+    md5: dbe10a0ddec1627ca8ba6a26c6fb8bb1
+    required: true
+    category: xenium_holdout_histology
+  - id: geo_gse243275_raw
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE243nnn/GSE243275/suppl/GSE243275_RAW.tar
+    path: geo/GSE243275/GSE243275_RAW.tar
+    expected_bytes: 2858362880
+    required: true
+    category: scrna_visium_reference
+    unpack: tar
+  - id: geo_gse243280_raw_superseries
+    url: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE243nnn/GSE243280/suppl/GSE243280_RAW.tar
+    path: geo/GSE243280/GSE243280_RAW.tar
+    expected_bytes: 34133411840
+    required: false
+    category: geo_superseries_raw
+    note: Public Janesick SuperSeries raw package. The breast benchmark uses the public GSE243168 Xenium and GSE243275 scRNA/Visium subseries; GSE243275_RAW.tar is downloaded separately for the scRNA/Visium reference.
+    unpack: tar

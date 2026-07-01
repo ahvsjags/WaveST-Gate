@@ -1,0 +1,16 @@
+figure,nonblank,pdf_bytes,pdf_exists,png_bytes,png_exists,png_height,png_width,svg_bytes,svg_exists,tif_bytes,tif_exists
+supplementary_figure_s1_benchmark_qc,True,61395,True,400939,True,2216,3254,380243,True,115374030,True
+supplementary_figure_s2_aggregation_sensitivity,True,29877,True,443539,True,2047,3037,60186,True,99468030,True
+supplementary_figure_s3_full_celltype_atlas,True,1067858,True,6032714,True,2963,4049,1554344,True,191978902,True
+supplementary_figure_s4_baseline_fairness,True,32014,True,304450,True,1995,3239,82781,True,103347218,True
+supplementary_figure_s5_leakage_negative_controls,True,33431,True,339973,True,1990,3300,61984,True,105061722,True
+supplementary_figure_s6_ablation_mechanism,True,27427,True,293122,True,1922,2941,57916,True,90465366,True
+supplementary_figure_s7_he_morphology_contribution,True,110181,True,577753,True,2123,3341,182522,True,113477546,True
+supplementary_figure_s8_reliability_calibration,True,34455,True,305676,True,1865,2670,121684,True,79645198,True
+supplementary_figure_s9_boundary_preservation,True,297410,True,2170753,True,2044,3566,439347,True,116622670,True
+supplementary_figure_s10_niche_biological_validation,True,117647,True,826097,True,1942,3100,194446,True,96338942,True
+supplementary_figure_s11_external_generalization,True,34946,True,311444,True,1867,2835,67028,True,84506510,True
+supplementary_figure_s12_robustness_stress_tests,True,28635,True,214638,True,1864,2817,52003,True,84021694,True
+supplementary_figure_s13_external_pathology_validation,True,44658,True,338673,True,1914,3396,69316,True,104014622,True
+supplementary_figure_s14_reproducibility_release,True,40311,True,427848,True,1973,3154,181776,True,99540446,True
+supplementary_figure_s15_compute_scalability,True,49338,True,296922,True,1929,3150,109446,True,97206374,True

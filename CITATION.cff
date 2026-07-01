@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use WaveST-Gate, please cite this software release and the associated manuscript."
+title: "WaveST-Gate: Xenium-to-Visium Breast Cancer Spatial Deconvolution Benchmark and Evidence"
+version: "0.1.0"
+date-released: "2026-06-05"
+doi: "10.5281/zenodo.20550855"
+url: "https://zenodo.org/records/20550855"
+type: software
+license: MIT
+authors:
+  - name: "WaveST-Gate contributors"
+abstract: >-
+  WaveST-Gate is a reliability-calibrated multimodal spatial deconvolution
+  framework for breast cancer spatial transcriptomics. The release includes a
+  reproducible Xenium-to-Visium benchmark, PyTorch model implementation,
+  baseline comparisons, ablations, calibration and boundary analyses,
+  biological niche interpretation, external generalization summaries, and
+  robustness evidence.
+keywords:
+  - spatial transcriptomics
+  - Xenium
+  - Visium
+  - breast cancer
+  - deconvolution
+  - multimodal learning
+  - reliability calibration
+  - tumor microenvironment
+references:
+  - type: data
+    title: "Spatial Molecular Imaging of the Organ-wide Cell Types and Tissue Structures"
+    doi: "10.5281/zenodo.4739739"
+    notes: "Wu/Swarbrick public Visium breast cancer atlas cited by the external generalization evidence."

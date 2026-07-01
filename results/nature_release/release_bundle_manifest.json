@@ -1,0 +1,536 @@
+{
+  "generated_at_utc": "2026-06-05T06:08:59.562481+00:00",
+  "version": "0.1.0",
+  "title": "WaveST-Gate: Xenium-to-Visium Breast Cancer Spatial Deconvolution Benchmark and Evidence",
+  "release_status": "zenodo_published",
+  "doi": "10.5281/zenodo.20550855",
+  "zenodo_token_present": false,
+  "num_files": 615,
+  "bundle_path": "results/nature_release/wavestgate_submission_evidence_v0.1.0.tar.gz",
+  "bundle_bytes": 104284966,
+  "bundle_sha256": "dd849c78a8b90d9ae8f5d1a9f470ee3c27dd80e23117db97468ae38d8426b24f",
+  "upload_manifest": "results/nature_release/release_upload_manifest.csv",
+  "zenodo_metadata": "results/nature_release/zenodo_metadata.json",
+  "instructions": "results/nature_release/zenodo_deposition_instructions.md",
+  "critical_artifacts": [
+    {
+      "path": "LICENSE",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1081,
+      "sha256": "68aa43ecd118e3e51aa9fa3ab0a1af962f2c28dc6e9e5565e45380659c2a2b11"
+    },
+    {
+      "path": "CITATION.cff",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1175,
+      "sha256": "439da5ce21fb82332ec1a2e3d45e0acbf4a304aef715851991d74aa0b4ff1700"
+    },
+    {
+      "path": "codemeta.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1557,
+      "sha256": "fdf197321314300fff0a0af0cbf9064b81e5d83ed7039df0f75702bb061c1d6e"
+    },
+    {
+      "path": "results/nature_release/environment_report.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 3726,
+      "sha256": "cc3410223b834fa5ed1851c7a9368a4926104f28a3902119c53cfe6d1d71ebad"
+    },
+    {
+      "path": "results/nature_release/environment_report.md",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1323,
+      "sha256": "a06c7e9f9edc8da5e65dd688f6d78779bc6157db58b2e5597dbc175c91a38d04"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/checkpoint.pt",
+      "exists": true,
+      "bundled": true,
+      "bytes": 3596594,
+      "sha256": "77943b0be4f23a02a3b25b88bcda2add6ebe8b9e5014873ef8cda077ddd690d0"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/metrics.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 709,
+      "sha256": "b121ab9cf4f7ce29cedd6efabb8afbb86daf6b16d5997f523b5c9bdf41dbbd66"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/training_history.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 82856,
+      "sha256": "ec676254f425164d63f6df5b09414554835531315f9c9b8c0535f752efb331e2"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/predicted_proportions.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1309900,
+      "sha256": "273111b946f59142017e3798818744025d201c88cd4e7739694f6051f8287c5f"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/reconstructed_expression.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 15171975,
+      "sha256": "7d3af77979bdea0390a56d20521d9fb3d3d5a1e0a67232f654ea9c21ed0321c8"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/gate_weights.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 279519,
+      "sha256": "1c09dd242f33f5ed44273130501043b4d7757ac51754a73b56c94dca231c1be0"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/raw_gate_weights.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 273910,
+      "sha256": "cd608f3ee6a9ff2fc76842d721e47abac96f024127ac81f4bc76d760a782b6de"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/modality_reliability.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 254554,
+      "sha256": "c2483dcf67acd89b14b5cfc5af8f4a51473c6ef96a20ba1b433252df74601977"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/spot_uncertainty.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 153512,
+      "sha256": "97e472e510372dce7b9a5050fc93f65740fa06f6ec65f0369f79a4ecdbccd4b3"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/agent_attention.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1192662,
+      "sha256": "9f463eb186575545a1770abb6c3cfaff231914fe083011ee2a4bdda2d2588f3a"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/nature_analysis/proportion_maps/proportion_map_manifest.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 2918,
+      "sha256": "48f80868744dd9a890431ec117f179ff03c32115097247f8088f3eeea0e56c0e"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/nature_analysis/proportion_maps/predicted_top_celltypes_panel.png",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1480538,
+      "sha256": "43c1ab2b948c62318cf69b07b65e2901014e1acc09bf499067e28ae582b16f91"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/nature_analysis/proportion_maps/predicted_tumor_immune_stromal_group_panel.png",
+      "exists": true,
+      "bundled": true,
+      "bytes": 798235,
+      "sha256": "53aeee45cfea8109af33723a59082fd8006862e0980a5cc18b12ef968fdb58b6"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/nature_analysis/reliability_summary.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1443,
+      "sha256": "8446bb7a33b3649812c997f2ea78234b9599ff098db1f53a176f92ca12df3819"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/nature_analysis/boundary_summary.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 774,
+      "sha256": "e2221655e746f19c8bbc93685bc3de881fd80f3e61366d3b2431c0666f6e451d"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/nature_analysis/niche_summary.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 760,
+      "sha256": "5c5adc444be33b52f9f8a3f995ed3e8be6921ff9f4a08cb6a8f4cf39d60d8f79"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/split_sensitivity/original_split_gt_summary.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 74,
+      "sha256": "07371c6728f590359e2648e2da6c3712b462c5e235aebd3024f0370ad6bc84b2"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/split_sensitivity/split_sensitivity_aggregate.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 375,
+      "sha256": "474f5d2fcc00d49b462e20a4fbbc38315800db2b62002218cb858ef54a8ac4e3"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/split_sensitivity/split_sensitivity_manifest.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1323,
+      "sha256": "128bc18567907c0da8cf4a85c9ca66ce4633bdcb0ae8782cce6cdc5cf3363bb3"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/benchmark_sensitivity/radius_cell_count_sensitivity.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 2051,
+      "sha256": "6229e40867209ef40939b0977f1c530d5d53c47f47402fe929ca9103ab404570"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/benchmark_sensitivity/radius_coverage_summary.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1194,
+      "sha256": "5e3584f7e5907ddf90f16a7d40af2b72d48ac5b32ef2825f6626db80e3fb617f"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55/benchmark_sensitivity/radius_cell_count_sensitivity_manifest.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1134,
+      "sha256": "8310c0ad6b1ffdecabc05824f118979e9e29676c739bbe57e8cac13ff298a0d9"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_split_guarded/metrics.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 770,
+      "sha256": "7d53160d3c97755eaf9a9c4d94428c65edcd63dcc96547ece71f96967b45a14d"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_split_guarded/predicted_proportions.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 192766,
+      "sha256": "2d7a126a127e32c1b760d92da605b30d6c97b65337d8ce93def716733cf41887"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_imagegate/checkpoint.pt",
+      "exists": true,
+      "bundled": true,
+      "bytes": 3597362,
+      "sha256": "4d0052cf0f53ff6213c5fde826f36246fde693622a65df72884986d4dd953b35"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_imagegate/metrics.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 777,
+      "sha256": "168e14a4e105ba0378249d576754840b0f9f1674fbdd8ab4822b1652df8404a7"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_imagegate/training_history.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 92637,
+      "sha256": "1e35d3bf370a0a38b3ee5bb0947e3d315e51678924f8554a30051e9aa48e73eb"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_imagegate/gate_weights.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 268082,
+      "sha256": "ea1213c1cc9f398b6b53a1aede5a07da69b866a3415e84bf9e6226ae6bd354a7"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_imagegate/raw_gate_weights.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 259313,
+      "sha256": "dcc32f7ee1e84cd572341aa36ccb2e08d395c0e51574a7656646c4ff33866a57"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_imagegate/nature_analysis/reliability_summary.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1507,
+      "sha256": "1d14fb5a3221ee34fc08325d55d0051031d34227b2bd42bdee1d5bd6be4ec8db"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_imagegate/nature_analysis/boundary_summary.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 934,
+      "sha256": "2d2f3bfc5caee9dacaf7ff127e7bfc25dc2913e3ca0d5902b44f79fc9280b31e"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_imagegate/image_contribution/image_contribution_summary.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1125,
+      "sha256": "3bdf89980b1a46729faf308941103a6eac728a73ca81898266de176118ff3822"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_imagegate/image_contribution/image_contribution_texture_groups.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 361,
+      "sha256": "752bd5222a0d48aec413551dc3c767db9656230eeb904e589cd1fe1497695779"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_imagegate_noimage/metrics.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 774,
+      "sha256": "6d93dc490bdb014ffe6877db03fbea3cad48e9c8781ff56e638ae7b0b314d082"
+    },
+    {
+      "path": "results/nature_main/cytassist_rep2_radius55_imagegate_noimage/predicted_proportions.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1309622,
+      "sha256": "399daf162222a31f0344b79dc0dd8887ee778a7f6bcd7cc49c67a46ca29bb11c"
+    },
+    {
+      "path": "results/nature_external_matched_gt/xenium_rep1_pseudospots_radius55_common297/rep1_retune_budget_curve/rep1_minimal_retune_budget_curve.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 4160,
+      "sha256": "14f24754482353c5bab19e3f77203152bf7396b960bf2a12bc7ef174e57000b9"
+    },
+    {
+      "path": "results/nature_external_matched_gt/xenium_rep1_pseudospots_radius55_common297/rep1_retune_budget_curve/rep1_minimal_retune_budget_curve_manifest.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1229,
+      "sha256": "954af773f4b3a2a04b17fdbc45feac51c7af3f5743e95ef4cdac71309a021810"
+    },
+    {
+      "path": "results/nature_manuscript_tables/table_8_split_sensitivity.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1907,
+      "sha256": "230aee5943595684fe0e4c4e07911c3c15cb04c0bfe77baef345ec1a0226b180"
+    },
+    {
+      "path": "results/nature_manuscript_tables/table_9_imagegate_supplement.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1696,
+      "sha256": "1253ee33b98f28385db9f22a6351a4f65a2f09722b4366e1bf1a4f59be121aa4"
+    },
+    {
+      "path": "results/nature_manuscript_tables/table_10_benchmark_sensitivity.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 5803,
+      "sha256": "726dda75c6e6429c6543448a6fd8fd86a9105cb1b3423c51b5ff9ef35ba70ec4"
+    },
+    {
+      "path": "results/nature_manuscript_tables/table_11_rep1_retune_budget_curve.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1974,
+      "sha256": "2ded74d19ef7fb9967837ae477710754537fcd42c369aa041af035742dd1e4bd"
+    },
+    {
+      "path": "results/nature_manuscript_figures/figure_manifest.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 3507,
+      "sha256": "19f8e24f53fd729d3aa823fa11719dbee9ec9883a9ecc138b3fa9c5cfd282173"
+    },
+    {
+      "path": "results/nature_manuscript_figures/figure_manifest.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1868,
+      "sha256": "624d2e33ee0bcae88c1a826414c93352992868611ce1c525b7b0717889b6026d"
+    },
+    {
+      "path": "results/nature_manuscript_figures/figure_manifest.md",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1249,
+      "sha256": "77e3c21a086b0b92e1eff18557e52d735b5e95857f11f5f13d17f53be1e3fafc"
+    },
+    {
+      "path": "results/nature_manuscript_figures/figure_1_workflow_schematic.png",
+      "exists": true,
+      "bundled": true,
+      "bytes": 98342,
+      "sha256": "29754b081dc054a4d41b108db2afb1259c5fdb0c1c2e1461ec52528327b5c43f"
+    },
+    {
+      "path": "results/nature_manuscript_figures/figure_2_spatial_cell_composition.png",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1010681,
+      "sha256": "a9b313e3e9622a0c51c27a856a04abde32caff40e734dace5c05c1c01ff14d3a"
+    },
+    {
+      "path": "results/nature_manuscript_figures/figure_3_baseline_performance.png",
+      "exists": true,
+      "bundled": true,
+      "bytes": 95968,
+      "sha256": "e4eadcf37cce839eda16d691c604412f25b751240c1610ce77568592a7acfae5"
+    },
+    {
+      "path": "results/nature_manuscript_figures/figure_4_reliability_calibration.png",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1691388,
+      "sha256": "ce468e8ad5e3b5ac346a5b36a7c487ee5226e2d8c5a6c4676d8bad57838e2746"
+    },
+    {
+      "path": "results/nature_manuscript_figures/figure_5_boundary_niche_pathology.png",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1268834,
+      "sha256": "24d9a8b92f148fd56b7b5f5edba112fbb6da456434746f41aafe93fd948127a3"
+    },
+    {
+      "path": "results/nature_manuscript_statements/manuscript_availability_statements.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 8470,
+      "sha256": "2cef07af3c4f34de23b12fbb882a2dcbe9e3d0f0f5bf1840554813b218fc9823"
+    },
+    {
+      "path": "results/nature_manuscript_statements/manuscript_availability_statements.md",
+      "exists": true,
+      "bundled": true,
+      "bytes": 3109,
+      "sha256": "2c61da92389e6e6ea470fc0adfaefec9a4004eb12d187f3ddff3ca4919b58925"
+    },
+    {
+      "path": "results/nature_manuscript_methods/manuscript_methods.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 22181,
+      "sha256": "9f3682b40d7cdca29139b17b22e59c9f42e9d978118c3dcf0fa4d3dc5509ceae"
+    },
+    {
+      "path": "results/nature_manuscript_methods/manuscript_methods.md",
+      "exists": true,
+      "bundled": true,
+      "bytes": 15831,
+      "sha256": "68cd77ad6875ecd718ddaf9a124ea372662b40719fa562b7b15e223f7762e547"
+    },
+    {
+      "path": "results/nature_manuscript_figure_legends/figure_legends.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 11696,
+      "sha256": "4399affaa7f9e3e7c0c9f056a95a0a1729c2f02bef729aa6802e4bcaecb442f7"
+    },
+    {
+      "path": "results/nature_manuscript_figure_legends/figure_legends.md",
+      "exists": true,
+      "bundled": true,
+      "bytes": 8336,
+      "sha256": "ebc093e18fd276a1b09e7dcf9da69dbfcdacc318d43e23aa81f499c8369b9392"
+    },
+    {
+      "path": "results/nature_benchmark_datasheet/benchmark_datasheet.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 12366,
+      "sha256": "0abcfa9b431e1e5b0d5fbc4f9754c7439c811d38a6740fbcf31d687b9afb0e32"
+    },
+    {
+      "path": "results/nature_benchmark_datasheet/benchmark_datasheet.md",
+      "exists": true,
+      "bundled": true,
+      "bytes": 4830,
+      "sha256": "f91fd427d79e0f7031513acc7c37fb92696e1875682cb6df8965f2bc6cfa5b7c"
+    },
+    {
+      "path": "results/nature_completion_audit/goal_completion_audit.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 14383,
+      "sha256": "ad0c654574a14cca55cd0f3029eddca8e24b5ee53679d970e7224b8f8a10bb67"
+    },
+    {
+      "path": "results/nature_completion_audit/goal_completion_audit.md",
+      "exists": true,
+      "bundled": true,
+      "bytes": 11563,
+      "sha256": "0c2e6dffc6166074b0576de7acdad96aed3cc44a0168e8759d19dea0ba2f375d"
+    },
+    {
+      "path": "results/nature_final_doi_gate/final_doi_gate.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 2263,
+      "sha256": "b0d2be13f70ef73532bb9f5561fb14c95fec1dfc6663c35ba2a9c6bc81e793c8"
+    },
+    {
+      "path": "results/nature_final_doi_gate/final_doi_gate.md",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1492,
+      "sha256": "19977a6590c5b8fe72e7701cd37193159c0410d1d532abc1be6ab12db2479976"
+    },
+    {
+      "path": "results/nature_reviewer_preflight/reviewer_preflight.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 38143,
+      "sha256": "fd791694b7e21a6d54694e18017cd2903ca2e35498b656461d960f14ccdbf3c7"
+    },
+    {
+      "path": "results/nature_reviewer_preflight/reviewer_preflight.md",
+      "exists": true,
+      "bundled": true,
+      "bytes": 17182,
+      "sha256": "8312b9307564cc411ff3f8f3b7b6aef7b277761a8ea384640fdf1bbfbd837b76"
+    },
+    {
+      "path": "results/nature_leakage_fairness_audit/leakage_fairness_audit.json",
+      "exists": true,
+      "bundled": true,
+      "bytes": 3697,
+      "sha256": "373a39f849160926d513923720c03e7ce5b4b867e4c9238ab0a17074d9147065"
+    },
+    {
+      "path": "results/nature_leakage_fairness_audit/leakage_fairness_audit.md",
+      "exists": true,
+      "bundled": true,
+      "bytes": 2202,
+      "sha256": "7a45b3bc341459c91ce79685e4c4185ffe744abcacca9acf1c7e9754e97c3b16"
+    },
+    {
+      "path": "results/nature_leakage_fairness_audit/leakage_fairness_checklist.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 1763,
+      "sha256": "6ef3c95c27902d886a543b04efc4007d969ca761624ada953a9e6234d7fa038b"
+    },
+    {
+      "path": "results/nature_leakage_fairness_audit/baseline_fairness_table.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 2560,
+      "sha256": "fd2da87b098bac04ee7430744e9436388c136d9b069641bd3d456b868b2d25d8"
+    },
+    {
+      "path": "results/nature_leakage_fairness_audit/label_permutation_control.csv",
+      "exists": true,
+      "bundled": true,
+      "bytes": 4594,
+      "sha256": "0f236bb50643550fe02e0dad7c035ff4f3ae9dbb668251f1e5d3f72707285e56"
+    }
+  ],
+  "num_critical_artifacts": 73,
+  "missing_critical_artifacts": [],
+  "unbundled_critical_artifacts": [],
+  "excluded_large_or_raw_data_note": "Raw public data and large binary files are referenced through manifests rather than bundled.",
+  "zenodo_deposition_id": "20550855",
+  "zenodo_record_url": "https://zenodo.org/records/20550855",
+  "zenodo_bucket_url": "https://zenodo.org/api/files/0b506de9-e805-44bd-8523-00a01a3de0ff",
+  "zenodo_deposition_result": "results/nature_release/zenodo_deposition_result.json"
+}

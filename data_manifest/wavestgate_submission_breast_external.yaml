@@ -1,0 +1,230 @@
+dataset_id: wavestgate_submission_breast_external
+description: >
+  Additional public breast cancer spatial transcriptomics datasets for
+  independent testing, cross-sample generalization, and baseline benchmarking.
+  These are official 10x Genomics Visium datasets with full-resolution images,
+  Space Ranger spatial bundles, expression matrices, analysis outputs, and
+  summary artifacts where available.
+root_dir: data/raw/wavestgate_submission_breast_external
+sources:
+  - name: 10x_breast_block_a_section_1
+    role: independent_test
+    url: https://www.10xgenomics.com/cn/datasets/human-breast-cancer-block-a-section-1-1-standard-1-0-0
+    notes: Fresh frozen invasive ductal carcinoma, 3,813 spots under tissue.
+  - name: 10x_breast_block_a_section_2
+    role: independent_test
+    url: https://www.10xgenomics.com/datasets/human-breast-cancer-block-a-section-2-1-standard-1-0-0
+    notes: Fresh frozen invasive ductal carcinoma, 4,015 spots under tissue.
+  - name: 10x_invasive_ductal_carcinoma_cd3_if
+    role: external_generalization
+    url: https://www.10xgenomics.com/datasets/invasive-ductal-carcinoma-stained-with-fluorescent-cd-3-antibody-1-standard-1-2-0
+    notes: Fresh frozen breast IDC stained with DAPI and fluorescent CD3 antibody, 4,727 spots under tissue.
+  - name: 10x_ffpe_dcis_invasive_carcinoma
+    role: external_generalization
+    url: https://www.10xgenomics.com/datasets/human-breast-cancer-ductal-carcinoma-in-situ-invasive-carcinoma-ffpe-1-standard-1-3-0
+    notes: FFPE breast DCIS/invasive carcinoma with pathologist annotation image, 2,518 spots under tissue.
+items:
+  - id: block_a_section_1_filtered_feature_matrix_h5
+    dataset: breast_block_a_section_1
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_1/V1_Breast_Cancer_Block_A_Section_1_filtered_feature_bc_matrix.h5
+    path: 10x/breast_block_a_section_1/V1_Breast_Cancer_Block_A_Section_1_filtered_feature_bc_matrix.h5
+    expected_bytes: 28201028
+    required: true
+    category: visium_expression
+  - id: block_a_section_1_spatial_bundle
+    dataset: breast_block_a_section_1
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_1/V1_Breast_Cancer_Block_A_Section_1_spatial.tar.gz
+    path: 10x/breast_block_a_section_1/V1_Breast_Cancer_Block_A_Section_1_spatial.tar.gz
+    expected_bytes: 9960960
+    required: true
+    category: visium_spatial
+    unpack: tar.gz
+  - id: block_a_section_1_image
+    dataset: breast_block_a_section_1
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_1/V1_Breast_Cancer_Block_A_Section_1_image.tif
+    path: 10x/breast_block_a_section_1/V1_Breast_Cancer_Block_A_Section_1_image.tif
+    expected_bytes: 1763006484
+    required: true
+    category: histology
+  - id: block_a_section_1_web_summary
+    dataset: breast_block_a_section_1
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_1/V1_Breast_Cancer_Block_A_Section_1_web_summary.html
+    path: 10x/breast_block_a_section_1/V1_Breast_Cancer_Block_A_Section_1_web_summary.html
+    required: false
+    category: qc_summary
+  - id: block_a_section_1_analysis
+    dataset: breast_block_a_section_1
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_1/V1_Breast_Cancer_Block_A_Section_1_analysis.tar.gz
+    path: 10x/breast_block_a_section_1/V1_Breast_Cancer_Block_A_Section_1_analysis.tar.gz
+    expected_bytes: 33388623
+    required: false
+    category: spaceranger_analysis
+    unpack: tar.gz
+  - id: block_a_section_1_cloupe
+    dataset: breast_block_a_section_1
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_1/V1_Breast_Cancer_Block_A_Section_1_cloupe.cloupe
+    path: 10x/breast_block_a_section_1/V1_Breast_Cancer_Block_A_Section_1_cloupe.cloupe
+    expected_bytes: 1252432752
+    required: false
+    category: loupe_browser
+  - id: block_a_section_2_filtered_feature_matrix_h5
+    dataset: breast_block_a_section_2
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_2/V1_Breast_Cancer_Block_A_Section_2_filtered_feature_bc_matrix.h5
+    path: 10x/breast_block_a_section_2/V1_Breast_Cancer_Block_A_Section_2_filtered_feature_bc_matrix.h5
+    expected_bytes: 28898028
+    required: true
+    category: visium_expression
+  - id: block_a_section_2_spatial_bundle
+    dataset: breast_block_a_section_2
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_2/V1_Breast_Cancer_Block_A_Section_2_spatial.tar.gz
+    path: 10x/breast_block_a_section_2/V1_Breast_Cancer_Block_A_Section_2_spatial.tar.gz
+    expected_bytes: 10345453
+    required: true
+    category: visium_spatial
+    unpack: tar.gz
+  - id: block_a_section_2_image
+    dataset: breast_block_a_section_2
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_2/V1_Breast_Cancer_Block_A_Section_2_image.tif
+    path: 10x/breast_block_a_section_2/V1_Breast_Cancer_Block_A_Section_2_image.tif
+    expected_bytes: 1763006484
+    required: true
+    category: histology
+  - id: block_a_section_2_web_summary
+    dataset: breast_block_a_section_2
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_2/V1_Breast_Cancer_Block_A_Section_2_web_summary.html
+    path: 10x/breast_block_a_section_2/V1_Breast_Cancer_Block_A_Section_2_web_summary.html
+    required: false
+    category: qc_summary
+  - id: block_a_section_2_analysis
+    dataset: breast_block_a_section_2
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_2/V1_Breast_Cancer_Block_A_Section_2_analysis.tar.gz
+    path: 10x/breast_block_a_section_2/V1_Breast_Cancer_Block_A_Section_2_analysis.tar.gz
+    expected_bytes: 33346710
+    required: false
+    category: spaceranger_analysis
+    unpack: tar.gz
+  - id: block_a_section_2_cloupe
+    dataset: breast_block_a_section_2
+    role: independent_test
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Breast_Cancer_Block_A_Section_2/V1_Breast_Cancer_Block_A_Section_2_cloupe.cloupe
+    path: 10x/breast_block_a_section_2/V1_Breast_Cancer_Block_A_Section_2_cloupe.cloupe
+    expected_bytes: 1248924906
+    required: false
+    category: loupe_browser
+  - id: idc_cd3_filtered_feature_matrix_h5
+    dataset: invasive_ductal_carcinoma_cd3_if
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.2.0/V1_Human_Invasive_Ductal_Carcinoma/V1_Human_Invasive_Ductal_Carcinoma_filtered_feature_bc_matrix.h5
+    path: 10x/invasive_ductal_carcinoma_cd3_if/V1_Human_Invasive_Ductal_Carcinoma_filtered_feature_bc_matrix.h5
+    expected_bytes: 19608897
+    required: true
+    category: visium_expression
+  - id: idc_cd3_spatial_bundle
+    dataset: invasive_ductal_carcinoma_cd3_if
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.2.0/V1_Human_Invasive_Ductal_Carcinoma/V1_Human_Invasive_Ductal_Carcinoma_spatial.tar.gz
+    path: 10x/invasive_ductal_carcinoma_cd3_if/V1_Human_Invasive_Ductal_Carcinoma_spatial.tar.gz
+    expected_bytes: 8923208
+    required: true
+    category: visium_spatial
+    unpack: tar.gz
+  - id: idc_cd3_image
+    dataset: invasive_ductal_carcinoma_cd3_if
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.2.0/V1_Human_Invasive_Ductal_Carcinoma/V1_Human_Invasive_Ductal_Carcinoma_image.tif
+    path: 10x/invasive_ductal_carcinoma_cd3_if/V1_Human_Invasive_Ductal_Carcinoma_image.tif
+    expected_bytes: 4702392512
+    required: true
+    category: immunofluorescence
+  - id: idc_cd3_web_summary
+    dataset: invasive_ductal_carcinoma_cd3_if
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.2.0/V1_Human_Invasive_Ductal_Carcinoma/V1_Human_Invasive_Ductal_Carcinoma_web_summary.html
+    path: 10x/invasive_ductal_carcinoma_cd3_if/V1_Human_Invasive_Ductal_Carcinoma_web_summary.html
+    required: false
+    category: qc_summary
+  - id: idc_cd3_analysis
+    dataset: invasive_ductal_carcinoma_cd3_if
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.2.0/V1_Human_Invasive_Ductal_Carcinoma/V1_Human_Invasive_Ductal_Carcinoma_analysis.tar.gz
+    path: 10x/invasive_ductal_carcinoma_cd3_if/V1_Human_Invasive_Ductal_Carcinoma_analysis.tar.gz
+    expected_bytes: 30147697
+    required: false
+    category: spaceranger_analysis
+    unpack: tar.gz
+  - id: idc_cd3_cloupe
+    dataset: invasive_ductal_carcinoma_cd3_if
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.2.0/V1_Human_Invasive_Ductal_Carcinoma/V1_Human_Invasive_Ductal_Carcinoma_cloupe.cloupe
+    path: 10x/invasive_ductal_carcinoma_cd3_if/V1_Human_Invasive_Ductal_Carcinoma_cloupe.cloupe
+    expected_bytes: 4075061086
+    required: false
+    category: loupe_browser
+  - id: ffpe_dcis_filtered_feature_matrix_h5
+    dataset: ffpe_dcis_invasive_carcinoma
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Breast_Cancer/Visium_FFPE_Human_Breast_Cancer_filtered_feature_bc_matrix.h5
+    path: 10x/ffpe_dcis_invasive_carcinoma/Visium_FFPE_Human_Breast_Cancer_filtered_feature_bc_matrix.h5
+    expected_bytes: 14030242
+    required: true
+    category: visium_expression
+  - id: ffpe_dcis_spatial_bundle
+    dataset: ffpe_dcis_invasive_carcinoma
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Breast_Cancer/Visium_FFPE_Human_Breast_Cancer_spatial.tar.gz
+    path: 10x/ffpe_dcis_invasive_carcinoma/Visium_FFPE_Human_Breast_Cancer_spatial.tar.gz
+    expected_bytes: 8316248
+    required: true
+    category: visium_spatial
+    unpack: tar.gz
+  - id: ffpe_dcis_image
+    dataset: ffpe_dcis_invasive_carcinoma
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Breast_Cancer/Visium_FFPE_Human_Breast_Cancer_image.tif
+    path: 10x/ffpe_dcis_invasive_carcinoma/Visium_FFPE_Human_Breast_Cancer_image.tif
+    expected_bytes: 103423835
+    required: true
+    category: histology
+  - id: ffpe_dcis_pathologist_annotations
+    dataset: ffpe_dcis_invasive_carcinoma
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Breast_Cancer/Visium_FFPE_Human_Breast_Cancer_Pathologist_Annotations.png
+    path: 10x/ffpe_dcis_invasive_carcinoma/Visium_FFPE_Human_Breast_Cancer_Pathologist_Annotations.png
+    expected_bytes: 2801764
+    required: true
+    category: pathology_annotation
+  - id: ffpe_dcis_web_summary
+    dataset: ffpe_dcis_invasive_carcinoma
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Breast_Cancer/Visium_FFPE_Human_Breast_Cancer_web_summary.html
+    path: 10x/ffpe_dcis_invasive_carcinoma/Visium_FFPE_Human_Breast_Cancer_web_summary.html
+    required: false
+    category: qc_summary
+  - id: ffpe_dcis_analysis
+    dataset: ffpe_dcis_invasive_carcinoma
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Breast_Cancer/Visium_FFPE_Human_Breast_Cancer_analysis.tar.gz
+    path: 10x/ffpe_dcis_invasive_carcinoma/Visium_FFPE_Human_Breast_Cancer_analysis.tar.gz
+    expected_bytes: 25876663
+    required: false
+    category: spaceranger_analysis
+    unpack: tar.gz
+  - id: ffpe_dcis_cloupe
+    dataset: ffpe_dcis_invasive_carcinoma
+    role: external_generalization
+    url: https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Breast_Cancer/Visium_FFPE_Human_Breast_Cancer_cloupe.cloupe
+    path: 10x/ffpe_dcis_invasive_carcinoma/Visium_FFPE_Human_Breast_Cancer_cloupe.cloupe
+    expected_bytes: 1023774608
+    required: false
+    category: loupe_browser

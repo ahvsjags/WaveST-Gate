@@ -1,0 +1,12 @@
+# Supplementary Table S1. Dataset and sample metadata
+
+Source: `data_manifest + benchmark datasheet`
+
+| item                    | value                                            | evidence                                  |
+|:------------------------|:-------------------------------------------------|:------------------------------------------|
+| primary benchmark       | 10x Janesick breast cancer CytAssist/Xenium Rep2 | data_manifest/wavestgate_breast_core.yaml |
+| spots                   | 4992                                             | benchmark datasheet                       |
+| Xenium-supervised spots | 485                                              | benchmark datasheet                       |
+| typed Xenium cells      | 115275                                           | benchmark datasheet                       |
+| cell types              | 19                                               | benchmark datasheet                       |
+| spot radius             | 55.0                                             | benchmark manifest                        |

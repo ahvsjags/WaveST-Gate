@@ -1,0 +1,55 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "WaveST-Gate",
+  "version": "0.1.0",
+  "description": "WaveST-Gate is a reliability-calibrated multimodal spatial deconvolution framework for breast cancer spatial transcriptomics, with a reproducible Xenium-to-Visium benchmark, PyTorch implementation, baseline comparisons, ablations, calibration and boundary analyses, biological niche interpretation, external generalization summaries, and robustness evidence.",
+  "identifier": "https://doi.org/10.5281/zenodo.20550855",
+  "codeRepository": "https://zenodo.org/records/20550855",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "programmingLanguage": "Python",
+  "runtimePlatform": "Python >=3.10",
+  "softwareRequirements": [
+    "torch",
+    "torchvision",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "pillow",
+    "pyyaml",
+    "tqdm"
+  ],
+  "keywords": [
+    "spatial transcriptomics",
+    "Xenium",
+    "Visium",
+    "breast cancer",
+    "deconvolution",
+    "multimodal learning",
+    "reliability calibration",
+    "tumor microenvironment"
+  ],
+  "applicationCategory": [
+    "Bioinformatics",
+    "Machine learning",
+    "Spatial transcriptomics"
+  ],
+  "author": [
+    {
+      "@type": "Organization",
+      "name": "WaveST-Gate contributors"
+    }
+  ],
+  "maintainer": {
+    "@type": "Organization",
+    "name": "WaveST-Gate contributors"
+  },
+  "isBasedOn": [
+    {
+      "@type": "Dataset",
+      "name": "Wu/Swarbrick public Visium breast cancer atlas",
+      "identifier": "https://doi.org/10.5281/zenodo.4739739"
+    }
+  ],
+  "datePublished": "2026-06-05"
+}

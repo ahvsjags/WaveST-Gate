@@ -1,0 +1,330 @@
+{
+  "generated_at_utc": "2026-06-05T06:13:55.765142+00:00",
+  "overall_status": "complete",
+  "stage_summary": {
+    "1. Xenium-to-Visium benchmark": {
+      "status": "complete",
+      "num_complete": 11,
+      "num_partial": 0,
+      "num_missing": 0,
+      "num_optional_pending": 0
+    },
+    "2. Main model training": {
+      "status": "complete",
+      "num_complete": 3,
+      "num_partial": 0,
+      "num_missing": 0,
+      "num_optional_pending": 0
+    },
+    "3. Strong baseline comparison": {
+      "status": "complete",
+      "num_complete": 5,
+      "num_partial": 0,
+      "num_missing": 0,
+      "num_optional_pending": 0
+    },
+    "4. Ablation study": {
+      "status": "complete",
+      "num_complete": 1,
+      "num_partial": 0,
+      "num_missing": 0,
+      "num_optional_pending": 0
+    },
+    "5. Reliability and calibration": {
+      "status": "complete",
+      "num_complete": 1,
+      "num_partial": 0,
+      "num_missing": 0,
+      "num_optional_pending": 0
+    },
+    "6. Boundary preservation": {
+      "status": "complete",
+      "num_complete": 2,
+      "num_partial": 0,
+      "num_missing": 0,
+      "num_optional_pending": 0
+    },
+    "7. Biological niche interpretation": {
+      "status": "complete",
+      "num_complete": 3,
+      "num_partial": 0,
+      "num_missing": 0,
+      "num_optional_pending": 0
+    },
+    "8. External generalization": {
+      "status": "complete",
+      "num_complete": 4,
+      "num_partial": 0,
+      "num_missing": 0,
+      "num_optional_pending": 0
+    },
+    "9. Robustness": {
+      "status": "complete",
+      "num_complete": 2,
+      "num_partial": 0,
+      "num_missing": 0,
+      "num_optional_pending": 0
+    }
+  },
+  "evidence_manifest": "results/nature_submission_readiness/evidence_manifest.csv",
+  "release_file_checksums": "results/nature_submission_readiness/release_file_checksums.csv",
+  "zenodo_release_manifest": "results/nature_submission_readiness/zenodo_release_manifest.json",
+  "records": [
+    {
+      "stage": "1. Xenium-to-Visium benchmark",
+      "requirement": "spot-level Xenium aggregation artifacts",
+      "status": "complete",
+      "evidence_path": "data/processed/xenium_to_visium_benchmark/cytassist_rep2_radius55/xenium_visium_benchmark_manifest.json",
+      "detail": "Counts, proportions, QC, splits, manifest, and protocol are required.",
+      "metric": "num_spots=4992; num_spots_with_ground_truth=485; num_cells=115275; num_cell_types=19; spot_radius=55"
+    },
+    {
+      "stage": "1. Xenium-to-Visium benchmark",
+      "requirement": "spot QC fields",
+      "status": "complete",
+      "evidence_path": "data/processed/xenium_to_visium_benchmark/cytassist_rep2_radius55/spot_ground_truth_qc.csv",
+      "detail": "QC includes cell coverage, entropy, dominant cell type, and GT coverage flag.",
+      "metric": "columns=spot_id,xenium_cell_count,ground_truth_entropy,dominant_cell_type,has_xenium_ground_truth"
+    },
+    {
+      "stage": "1. Xenium-to-Visium benchmark",
+      "requirement": "Zenodo-ready release bundle and metadata",
+      "status": "complete",
+      "evidence_path": "results/nature_release/release_bundle_manifest.json",
+      "detail": "Release bundle, upload manifest, Zenodo metadata, and deposition instructions are prepared.",
+      "metric": "num_files=615; bundle_bytes=104284966"
+    },
+    {
+      "stage": "1. Xenium-to-Visium benchmark",
+      "requirement": "release bundle integrity verification",
+      "status": "complete",
+      "evidence_path": "results/nature_release/release_verification.json",
+      "detail": "Release verifier checked tar readability, upload manifest members, critical artifacts, and dry-run bundle consistency.",
+      "metric": "overall_status=passed; bundle_integrity_status=passed; doi_status=published; tar_member_count=617; critical_artifacts_checked=73; num_failures=0"
+    },
+    {
+      "stage": "1. Xenium-to-Visium benchmark",
+      "requirement": "software and hardware environment report",
+      "status": "complete",
+      "evidence_path": "results/nature_release/environment_report.json",
+      "detail": "Environment report records Python, package versions, PyTorch/CUDA/GPU, R packages, and baseline environment status.",
+      "metric": "python=3.12.4; torch=2.6.0+cu124; cuda_available=True; gpu_count=1"
+    },
+    {
+      "stage": "1. Xenium-to-Visium benchmark",
+      "requirement": "Zenodo DOI / release deposition",
+      "status": "complete",
+      "evidence_path": "results/nature_release/zenodo_deposition_result.json",
+      "detail": "A WaveST-Gate release DOI was found in explicit published Zenodo deposition fields.",
+      "metric": "release_status=zenodo_published; doi=10.5281/zenodo.20550855; zenodo_deposition_id=20550855"
+    },
+    {
+      "stage": "1. Xenium-to-Visium benchmark",
+      "requirement": "benchmark datasheet and data dictionary",
+      "status": "complete",
+      "evidence_path": "results/nature_benchmark_datasheet/benchmark_datasheet.json",
+      "detail": "Datasheet records artifact inventory, QC summary, split summary, cell-type totals, data dictionary, and machine-checkable integrity checks for the Xenium-to-Visium benchmark.",
+      "metric": "status=complete; artifacts=6; cell_types=19; failed_integrity_checks=0"
+    },
+    {
+      "stage": "1. Xenium-to-Visium benchmark",
+      "requirement": "requirement-by-requirement goal completion audit",
+      "status": "complete",
+      "evidence_path": "results/nature_completion_audit/goal_completion_audit.json",
+      "detail": "Machine-readable audit maps every Nature-level goal requirement to evidence files and failed checks, with the project DOI kept as an explicit external action.",
+      "metric": "status=complete; requirements=11; complete=11; partial=0; missing=0"
+    },
+    {
+      "stage": "1. Xenium-to-Visium benchmark",
+      "requirement": "manuscript availability and reproducibility statements",
+      "status": "complete",
+      "evidence_path": "results/nature_manuscript_statements/manuscript_availability_statements.json",
+      "detail": "Generated Data availability, Code availability, Reproducibility, and Computing environment statements are evidence-linked and keep the project release DOI separate from upstream dataset DOIs.",
+      "metric": "status=zenodo_published; doi_status=recorded; doi=10.5281/zenodo.20550855; deposition_id=20550855"
+    },
+    {
+      "stage": "1. Xenium-to-Visium benchmark",
+      "requirement": "manuscript methods and statistical analysis draft",
+      "status": "complete",
+      "evidence_path": "results/nature_manuscript_methods/manuscript_methods.json",
+      "detail": "Generated Methods/Supplementary Methods draft links benchmark construction, model specification, training losses, baseline fairness, ablations, reliability, boundary, niche, external generalization, robustness, statistics, compute, and reproducibility evidence.",
+      "metric": "status=complete; sections=10; missing_required=0"
+    },
+    {
+      "stage": "1. Xenium-to-Visium benchmark",
+      "requirement": "reviewer preflight dossier",
+      "status": "complete",
+      "evidence_path": "results/nature_reviewer_preflight/reviewer_preflight.json",
+      "detail": "Reviewer-facing dossier links headline claims, likely reviewer concerns, preemptive responses, stage status, and evidence paths.",
+      "metric": "status=complete_except_project_doi; claims=9; concerns=12; missing_evidence=0"
+    },
+    {
+      "stage": "2. Main model training",
+      "requirement": "checkpoint, predictions, reliability maps, and training curve",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55",
+      "detail": "Main real-data run must provide model state, proportions, expression reconstruction, gates, uncertainty, attention, maps, and training history.",
+      "metric": "step=499; jsd=0.0129275; spotwise_cosine=0.993274; mean_celltype_pearson=0.92827; num_supervised_spots=485"
+    },
+    {
+      "stage": "2. Main model training",
+      "requirement": "manuscript Figure 1-5 assets",
+      "status": "complete",
+      "evidence_path": "results/nature_manuscript_figures/figure_manifest.json",
+      "detail": "Figure-level assets should exist for workflow, spatial composition, baselines, reliability, boundary/niche/pathology, and pass nonblank validation.",
+      "metric": "num_figures=6; num_pass=6; num_fail=0"
+    },
+    {
+      "stage": "2. Main model training",
+      "requirement": "manuscript figure legends and claim evidence",
+      "status": "complete",
+      "evidence_path": "results/nature_manuscript_figure_legends/figure_legends.json",
+      "detail": "Generated Figure 1-5 and Supplementary Figure S1 legends link each visual to key claims, values, and evidence files.",
+      "metric": "status=complete; legends=6; num_fail=0; missing_evidence=0"
+    },
+    {
+      "stage": "3. Strong baseline comparison",
+      "requirement": "formal baseline table with shared genes/reference/supervised spots",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55/baseline_comparison/baseline_comparison.csv",
+      "detail": "Completed formal baselines: WaveST-Gate, BayesPrism, RCTD (multi), SpatialDWLS/Seurat, CARD, reference_cosine, reference_nnls, SpatialDWLS, Tangram (rna_count_based, 1000 epochs), cell2location, Tangram (uniform, 1000 epochs), uniform, SPOTlight",
+      "metric": "missing=; n_methods=13"
+    },
+    {
+      "stage": "3. Strong baseline comparison",
+      "requirement": "runtime, memory, and paired significance",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55/baseline_comparison/baseline_comparison.csv",
+      "detail": "Comparison table should include runtime, memory, and paired per-spot significance columns.",
+      "metric": ""
+    },
+    {
+      "stage": "3. Strong baseline comparison",
+      "requirement": "split/bootstrap mean and standard deviation",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55/baseline_comparison/baseline_split_bootstrap_summary.csv",
+      "detail": "Split-wise and paired bootstrap mean/std statistics are required for the current matched benchmark.",
+      "metric": "n_methods=13; n_supervised_spots=485; n_bootstraps=500"
+    },
+    {
+      "stage": "3. Strong baseline comparison",
+      "requirement": "SpatialDWLS/Seurat package-stack rerun",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55/spatialdwls_giotto_baseline/spatialdwls_giotto_metrics.csv",
+      "detail": "Full Giotto runDWLSDeconv package-stack rerun produced predictions, metrics, and manifests.",
+      "metric": "SpatialDWLS/Seurat=ready; jsd=0.252396; spotwise_cosine=0.69183; runtime_seconds=1659.74"
+    },
+    {
+      "stage": "3. Strong baseline comparison",
+      "requirement": "independent matched-GT multi-sample mean and standard deviation",
+      "status": "complete",
+      "evidence_path": "results/nature_matched_multisample_baselines/matched_multisample_baseline_summary.csv",
+      "detail": "Independent matched-GT datasets should be aggregated for formal mean/std baseline reporting.",
+      "metric": "num_datasets=2; num_methods=12; complete_methods=9; jsd_mean=0.136431; jsd_std=0.174661; num_datasets=2"
+    },
+    {
+      "stage": "4. Ablation study",
+      "requirement": "module and modality ablations",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55/ablations250/ablation_summary.csv",
+      "detail": "Required ablations are present.",
+      "metric": "n_ablations=12"
+    },
+    {
+      "stage": "5. Reliability and calibration",
+      "requirement": "uncertainty calibration and modality reliability evidence",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55/nature_analysis",
+      "detail": "Uncertainty-error correlation, risk coverage, calibration, gate maps, and failure cases are required.",
+      "metric": "uncertainty_error_pearson=0.526288; uncertainty_error_spearman=0.598622; risk_gap=0.0107746; calibration_bin_pearson=0.961906"
+    },
+    {
+      "stage": "6. Boundary preservation",
+      "requirement": "typed boundary sharpness and marker validation",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55/nature_analysis",
+      "detail": "Tumor-stroma, ductal, immune-edge, marker validation, H&E overlay, and no-boundary comparison artifacts are required.",
+      "metric": "boundary_to_interior_jump_ratio=2.36171; mean_boundary_jump=1.12348"
+    },
+    {
+      "stage": "6. Boundary preservation",
+      "requirement": "independent pathology metadata validation",
+      "status": "complete",
+      "evidence_path": "results/nature_external_pathology_validation/pathology_class_summary.csv",
+      "detail": "External Wu/Swarbrick pathology classifications are compared with no-retuning predicted tumor/immune/stromal composition.",
+      "metric": "num_datasets=6; num_spots=15601; num_pathology_classes=19; overall_agreement_rate=0.828024"
+    },
+    {
+      "stage": "7. Biological niche interpretation",
+      "requirement": "tumor-immune-stromal niche outputs",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55/nature_analysis",
+      "detail": "Niche composition, marker enrichment, gate-by-niche, agent attention-by-niche, and maps are required.",
+      "metric": "num_niches=5"
+    },
+    {
+      "stage": "7. Biological niche interpretation",
+      "requirement": "Xenium neighborhood validation",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55/nature_analysis/niche_xenium_neighborhood_summary.csv",
+      "detail": "Predicted niches should be checked against local Xenium tumor/immune/stromal neighborhood composition.",
+      "metric": ""
+    },
+    {
+      "stage": "7. Biological niche interpretation",
+      "requirement": "independent pathology correspondence",
+      "status": "complete",
+      "evidence_path": "results/nature_external_pathology_validation/pathology_niche_summary.csv",
+      "detail": "External predicted niches are cross-tabulated against public pathology classification labels.",
+      "metric": "num_datasets=6; num_spots=15601; overall_agreement_rate=0.828024"
+    },
+    {
+      "stage": "8. External generalization",
+      "requirement": "no-retuning external prediction panel",
+      "status": "complete",
+      "evidence_path": "results/nature_external_no_retuning/external_no_retuning_summary.csv",
+      "detail": "External no-retuning predictions must include per-dataset proportions, gates, uncertainty, attention, metrics, and manifests.",
+      "metric": "n_datasets=10; external_10x=4; wu_swarbrick=6; missing_outputs=0"
+    },
+    {
+      "stage": "8. External generalization",
+      "requirement": "external matched-GT performance metrics",
+      "status": "complete",
+      "evidence_path": "results/nature_external_matched_gt/external_matched_gt_summary.csv",
+      "detail": "Rep1 Xenium pseudo-spots provide external no-retuning matched cell-type ground truth metrics and simple-baseline comparison.",
+      "metric": "num_datasets=1; num_spots=1146"
+    },
+    {
+      "stage": "8. External generalization",
+      "requirement": "Rep1 held-out minimal-retuning matched-GT adaptation",
+      "status": "complete",
+      "evidence_path": "results/nature_external_matched_gt/xenium_rep1_pseudospots_radius55_common297/wavestgate_minimal_retune/test_formal_comparison/baseline_comparison.csv",
+      "detail": "Rep2 checkpoint is minimally retuned on Rep1 train/val pseudo-spots and evaluated on held-out Rep1 test spots against formal baselines.",
+      "metric": "jsd=0.0385261; spotwise_cosine=0.960481; mean_celltype_pearson=0.670521; num_train_spots=975; num_eval_spots=171; top_method=WaveST-Gate; jsd=0.0385261"
+    },
+    {
+      "stage": "8. External generalization",
+      "requirement": "Rep1 no-retuning and minimal-retuning budget curve",
+      "status": "complete",
+      "evidence_path": "results/nature_external_matched_gt/xenium_rep1_pseudospots_radius55_common297/rep1_retune_budget_curve/rep1_minimal_retune_budget_curve.csv",
+      "detail": "Rep1 direct transfer is reported as a domain-shift case, and a held-out minimal-retuning budget curve quantifies the adaptation needed to beat the best baseline.",
+      "metric": "jsd=0.365606; best_baseline_jsd=0.178227; beats_best_baseline=False; budget_steps=25; jsd=0.125886; jsd_margin_vs_best_baseline=0.0523413"
+    },
+    {
+      "stage": "9. Robustness",
+      "requirement": "core stress tests",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55/robustness/robustness_summary.csv",
+      "detail": "Core robustness should include gene dropout, gene panels, cell-type removal, prototype perturbation, H&E perturbations, low-expression/low-cell-count subgroups, different splits, and patch sizes.",
+      "metric": "n_rows=42; removed_celltypes=19; prototype_rows=4; split_rows=5; missing_panels=[]; patch_sizes=128,256,32,64"
+    },
+    {
+      "stage": "9. Robustness",
+      "requirement": "GT-stratified split sensitivity and benchmark-radius confidence controls",
+      "status": "complete",
+      "evidence_path": "results/nature_main/cytassist_rep2_radius55/split_sensitivity/split_sensitivity_aggregate.csv",
+      "detail": "Supplementary GT-stratified splits address the zero-GT validation split, while radius/cell-count sensitivity checks Xenium-to-Visium benchmark-label confidence.",
+      "metric": "split_files=complete; benchmark_files=complete"
+    }
+  ]
+}

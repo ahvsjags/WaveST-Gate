@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wavestgate"
+version = "0.1.0"
+description = "Wavelet-guided cross-modal gating for morphology-aware spatial transcriptomics deconvolution."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "WaveST-Gate contributors" }
+]
+dependencies = [
+  "torch",
+  "torchvision",
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "pillow",
+  "pyyaml",
+  "tqdm"
+]
+
+[project.optional-dependencies]
+bio = ["scanpy", "anndata", "squidpy", "h5py", "scipy", "openpyxl"]
+baselines = ["scanpy", "anndata", "tangram-sc", "scipy"]
+graph = ["torch-geometric"]
+vision = ["timm", "pytorch-wavelets"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["wavestgate*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q"

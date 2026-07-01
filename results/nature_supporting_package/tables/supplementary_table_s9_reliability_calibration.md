@@ -1,0 +1,11 @@
+# Supplementary Table S9. Reliability, calibration and risk coverage
+
+Source: `results/nature_manuscript_tables/table_5_reliability_boundary_niche.csv`
+
+| claim_area                    | metric                                 |   value | evidence                                                                             | interpretation                                                              |
+|:------------------------------|:---------------------------------------|--------:|:-------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|
+| reliability_calibration       | uncertainty_error_pearson              |  0.5263 | results/nature_main/cytassist_rep2_radius55/nature_analysis/reliability_summary.json | Positive correlation means uncertainty tracks spot-level prediction error.  |
+| reliability_calibration       | calibration_bin_pearson                |  0.9619 | results/nature_main/cytassist_rep2_radius55/nature_analysis/reliability_summary.json | Calibration-bin trend supports reliability semantics.                       |
+| boundary_preservation         | boundary_to_interior_jump_ratio        |  2.362  | results/nature_main/cytassist_rep2_radius55/nature_analysis/boundary_summary.json    | Higher boundary than interior jumps indicate protected tissue transitions.  |
+| biological_niche              | num_niches                             |  5      | results/nature_main/cytassist_rep2_radius55/nature_analysis/niche_summary.json       | Named tumor/stromal/immune niche programs are available for interpretation. |
+| external_pathology_validation | spot_weighted_pathology_agreement_rate |  0.828  | results/nature_external_pathology_validation/pathology_class_summary.csv             | External pathology-class correspondence across public datasets.             |

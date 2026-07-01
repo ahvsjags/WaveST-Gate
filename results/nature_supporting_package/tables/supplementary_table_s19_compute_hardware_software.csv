@@ -1,0 +1,15 @@
+method,runtime_seconds,peak_cuda_memory_mb,device,source
+WaveST-Gate,,,cuda,baseline_comparison
+BayesPrism,53.50886431685649,0.0,R/cpu,baseline_comparison
+RCTD (multi),234.710883256048,0.0,R/cpu,baseline_comparison
+SpatialDWLS/Seurat,1659.7403389399406,0.0,R/Giotto/cpu,baseline_comparison
+CARD,365.5377978079487,0.0,R/cpu,baseline_comparison
+reference_cosine,0.0922611418645829,,cuda,baseline_comparison
+reference_nnls,2.1817491431720555,,cuda,baseline_comparison
+SpatialDWLS,21.78279391489923,0.0,R/cpu,baseline_comparison
+"Tangram (rna_count_based, 1000 epochs)",6.80472323205322,65.18505859375,cuda,baseline_comparison
+cell2location,958.9903073839378,42.884765625,cuda,baseline_comparison
+"Tangram (uniform, 1000 epochs)",6.357170480070636,65.18505859375,cuda,baseline_comparison
+uniform,0.0092994719743728,,cuda,baseline_comparison
+SPOTlight,128.19545472692698,0.0,R/cpu,baseline_comparison
+hardware,,24107.0,NVIDIA GeForce RTX 4090,environment_report

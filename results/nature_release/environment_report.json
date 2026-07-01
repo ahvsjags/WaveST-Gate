@@ -1,0 +1,169 @@
+{
+  "generated_at_utc": "2026-06-05T04:43:05.146180+00:00",
+  "python": {
+    "executable": "/root/miniconda3/envs/myconda/bin/python",
+    "version": "3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:12:24) [GCC 11.2.0]",
+    "implementation": "CPython"
+  },
+  "platform": {
+    "system": "Linux",
+    "release": "6.1.0-0.deb11.21-amd64",
+    "version": "#1 SMP PREEMPT_DYNAMIC Debian 6.1.90-1~bpo11+1 (2024-05-06)",
+    "machine": "x86_64",
+    "processor": "x86_64"
+  },
+  "packages": {
+    "wavestgate": {
+      "available": true,
+      "version": "0.1.0"
+    },
+    "torch": {
+      "available": true,
+      "version": "2.6.0"
+    },
+    "torchvision": {
+      "available": true,
+      "version": "0.21.0"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.0.0"
+    },
+    "pandas": {
+      "available": true,
+      "version": "2.3.3"
+    },
+    "scikit-learn": {
+      "available": true,
+      "version": "1.9.0"
+    },
+    "pillow": {
+      "available": true,
+      "version": "10.3.0"
+    },
+    "pyyaml": {
+      "available": true,
+      "version": "6.0.3"
+    },
+    "tqdm": {
+      "available": true,
+      "version": "4.66.4"
+    },
+    "scipy": {
+      "available": true,
+      "version": "1.14.0"
+    },
+    "h5py": {
+      "available": true,
+      "version": "3.11.0"
+    },
+    "anndata": {
+      "available": true,
+      "version": "0.12.16"
+    },
+    "scanpy": {
+      "available": true,
+      "version": "1.12.1"
+    },
+    "tangram-sc": {
+      "available": true,
+      "version": "1.0.4"
+    }
+  },
+  "torch": {
+    "available": true,
+    "version": "2.6.0+cu124",
+    "cuda_available": true,
+    "cuda_version": "12.4",
+    "cudnn_version": 90100,
+    "device_count": 1,
+    "devices": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 4090",
+        "total_memory_mb": 24107,
+        "major": 8,
+        "minor": 9
+      }
+    ]
+  },
+  "nvidia_smi": {
+    "available": true,
+    "command": [
+      "/usr/bin/nvidia-smi",
+      "--query-gpu=name,driver_version,memory.total",
+      "--format=csv,noheader"
+    ],
+    "stdout": "NVIDIA GeForce RTX 4090, 565.77, 24564 MiB",
+    "stderr": "",
+    "returncode": 0
+  },
+  "r": {
+    "rscript": "/usr/bin/Rscript",
+    "rscript_version": "R scripting front-end version 4.1.2 (2021-11-01)",
+    "returncode": 0,
+    "packages": {
+      "Seurat": {
+        "available": true,
+        "version": "5.5.0"
+      },
+      "Giotto": {
+        "available": true,
+        "version": "4.2.3"
+      },
+      "GiottoClass": {
+        "available": true,
+        "version": "0.5.1"
+      },
+      "GiottoUtils": {
+        "available": true,
+        "version": "0.2.5"
+      },
+      "GiottoVisuals": {
+        "available": true,
+        "version": "0.2.15"
+      },
+      "Rfast": {
+        "available": true,
+        "version": "2.1.5.2"
+      },
+      "quadprog": {
+        "available": true,
+        "version": "1.5.8"
+      },
+      "spacexr": {
+        "available": true,
+        "version": "2.2.1"
+      },
+      "CARD": {
+        "available": true,
+        "version": "1.1"
+      },
+      "MuSiC": {
+        "available": true,
+        "version": "1.0.0"
+      },
+      "BayesPrism": {
+        "available": true,
+        "version": "2.2.3"
+      },
+      "SPOTlight": {
+        "available": true,
+        "version": "1.2.0"
+      }
+    }
+  },
+  "baseline_environment_audit": {
+    "path": "results/nature_main/cytassist_rep2_radius55/baseline_environment_audit.json",
+    "status": {
+      "Tangram": "ready",
+      "cell2location": "ready",
+      "RCTD": "ready",
+      "CARD": "ready",
+      "SpatialDWLS": "ready",
+      "SpatialDWLS/Seurat": "ready",
+      "BayesPrism": "ready",
+      "SPOTlight": "ready"
+    }
+  }
+}

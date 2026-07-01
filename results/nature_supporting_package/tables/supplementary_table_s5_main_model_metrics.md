@@ -1,0 +1,17 @@
+# Supplementary Table S5. Main model metrics
+
+Source: `results/nature_manuscript_tables/table_2_main_model_performance.csv`
+
+| metric                     |     value | interpretation                                                 | evidence                                                                                                 |
+|:---------------------------|----------:|:---------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------|
+| training_step              | 499       | Final training step used for the main model.                   | results/nature_main/cytassist_rep2_radius55/metrics.csv                                                  |
+| supervised_spots           | 485       | Xenium-supervised spots evaluated.                             | results/nature_main/cytassist_rep2_radius55/metrics.csv                                                  |
+| JSD                        |   0.01293 | Primary cell-type proportion divergence, lower is better.      | results/nature_main/cytassist_rep2_radius55/metrics.csv                                                  |
+| spotwise_cosine            |   0.9933  | Spot-level proportion cosine similarity, higher is better.     | results/nature_main/cytassist_rep2_radius55/metrics.csv                                                  |
+| mean_celltype_pearson      |   0.9283  | Mean per-cell-type Pearson correlation.                        | results/nature_main/cytassist_rep2_radius55/metrics.csv                                                  |
+| proportion_RMSE            |   0.01786 | RMSE on supervised cell-type proportions.                      | results/nature_main/cytassist_rep2_radius55/metrics.csv                                                  |
+| expression_log1p_RMSE      |   0.6379  | Expression reconstruction error.                               | results/nature_main/cytassist_rep2_radius55/metrics.csv                                                  |
+| uncertainty_error_pearson  |   0.5263  | Correlation of model uncertainty with spot error.              | results/nature_main/cytassist_rep2_radius55/metrics.csv                                                  |
+| uncertainty_risk_gap       |   0.01077 | High-minus-low uncertainty JSD gap.                            | results/nature_main/cytassist_rep2_radius55/metrics.csv                                                  |
+| proportion_map_cell_types  |  19       | Number of cell types rendered in proportion-map analysis.      | results/nature_main/cytassist_rep2_radius55/nature_analysis/proportion_maps/proportion_map_manifest.json |
+| priority_cell_types_mapped |  11       | Priority breast cancer cell types rendered as manuscript maps. | results/nature_main/cytassist_rep2_radius55/nature_analysis/proportion_maps/proportion_map_manifest.json |

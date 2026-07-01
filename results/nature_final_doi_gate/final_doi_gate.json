@@ -1,0 +1,68 @@
+{
+  "generated_at_utc": "2026-06-10T08:41:46.056542+00:00",
+  "status": "complete",
+  "ready_to_deposit": false,
+  "complete_for_submission": true,
+  "token_present": false,
+  "doi": "10.5281/zenodo.20550855",
+  "zenodo_deposition_id": "20550855",
+  "zenodo_record_url": "https://zenodo.org/records/20550855",
+  "checks": [
+    {
+      "name": "release_bundle_integrity",
+      "status": "pass",
+      "detail": "bundle_integrity_status=passed; num_failures=0"
+    },
+    {
+      "name": "critical_artifacts_bundled",
+      "status": "pass",
+      "detail": "missing=0; unbundled=0"
+    },
+    {
+      "name": "completion_audit_local_requirements",
+      "status": "pass",
+      "detail": "overall_status=complete; num_missing=0"
+    },
+    {
+      "name": "readiness_no_missing_records",
+      "status": "pass",
+      "detail": "overall_status=complete"
+    },
+    {
+      "name": "zenodo_token_present",
+      "status": "warn",
+      "detail": "A token is needed only when creating/updating the real deposition."
+    },
+    {
+      "name": "project_doi_recorded",
+      "status": "pass",
+      "detail": "doi=10.5281/zenodo.20550855; zenodo_deposition_id=20550855"
+    },
+    {
+      "name": "project_doi_published",
+      "status": "pass",
+      "detail": "release_status=zenodo_published; doi=10.5281/zenodo.20550855; zenodo_deposition_id=20550855"
+    },
+    {
+      "name": "release_verification_doi_recorded",
+      "status": "pass",
+      "detail": "doi_status=published"
+    },
+    {
+      "name": "release_verification_doi_published",
+      "status": "pass",
+      "detail": "doi_status=published"
+    }
+  ],
+  "blocking_reasons": [],
+  "next_commands": [
+    "python -m wavestgate.evaluation.final_doi_gate --strict",
+    "export ZENODO_ACCESS_TOKEN=<token>",
+    "ZENODO_ACCESS_TOKEN=<token> python -m wavestgate.evaluation.finalize_submission --deposit",
+    "python -m wavestgate.evaluation.final_doi_gate --strict"
+  ],
+  "outputs": {
+    "json": "results/nature_final_doi_gate/final_doi_gate.json",
+    "markdown": "results/nature_final_doi_gate/final_doi_gate.md"
+  }
+}

@@ -1,0 +1,60 @@
+# Supplementary Table S11. Boundary preservation and marker validation
+
+Source: `results/nature_main/cytassist_rep2_radius55/nature_analysis/boundary_marker_validation.csv`
+
+| boundary_type            | marker_set       | present_genes              |   num_edge_spots |   mean_expression |
+|:-------------------------|:-----------------|:---------------------------|-----------------:|------------------:|
+| ductal_boundary          | tumor_epithelial | EPCAM;KRT8;ERBB2           |             1005 |         48.9353   |
+| ductal_boundary          | stromal          | LUM;ACTA2                  |             1005 |         19.0587   |
+| ductal_boundary          | immune           | CD3D;CD3E;CD8A;MS4A1;PTPRC |             1005 |          0.896716 |
+| ductal_boundary          | macrophage       | CD68;CD163;MRC1;C1QA       |             1005 |          4.52612  |
+| ductal_boundary          | t_cell           | CD3D;CD3E;CD4;CD8A;GZMB    |             1005 |          1.39065  |
+| ductal_boundary          | her2_tumor       | ERBB2;EPCAM                |             1005 |         63.4741   |
+| immune_infiltration_edge | tumor_epithelial | EPCAM;KRT8;ERBB2           |              360 |         63.05     |
+| immune_infiltration_edge | stromal          | LUM;ACTA2                  |              360 |         14.4514   |
+| immune_infiltration_edge | immune           | CD3D;CD3E;CD8A;MS4A1;PTPRC |              360 |          1.77889  |
+| immune_infiltration_edge | macrophage       | CD68;CD163;MRC1;C1QA       |              360 |          6.40694  |
+| immune_infiltration_edge | t_cell           | CD3D;CD3E;CD4;CD8A;GZMB    |              360 |          2.53389  |
+| immune_infiltration_edge | her2_tumor       | ERBB2;EPCAM                |              360 |         83.0542   |
+| immune_stromal_edge      | tumor_epithelial | EPCAM;KRT8;ERBB2           |              760 |          7.23903  |
+| immune_stromal_edge      | stromal          | LUM;ACTA2                  |              760 |         14.5697   |
+| immune_stromal_edge      | immune           | CD3D;CD3E;CD8A;MS4A1;PTPRC |              760 |          1.53658  |
+| immune_stromal_edge      | macrophage       | CD68;CD163;MRC1;C1QA       |              760 |          5.97303  |
+| immune_stromal_edge      | t_cell           | CD3D;CD3E;CD4;CD8A;GZMB    |              760 |          2.04658  |
+| immune_stromal_edge      | her2_tumor       | ERBB2;EPCAM                |              760 |          9.33684  |
+| stromal                  | tumor_epithelial | EPCAM;KRT8;ERBB2           |               60 |          3.67778  |
+| stromal                  | stromal          | LUM;ACTA2                  |               60 |         13.2833   |
+| stromal                  | immune           | CD3D;CD3E;CD8A;MS4A1;PTPRC |               60 |          0.6      |
+| stromal                  | macrophage       | CD68;CD163;MRC1;C1QA       |               60 |          7.15     |
+| stromal                  | t_cell           | CD3D;CD3E;CD4;CD8A;GZMB    |               60 |          1.10333  |
+| stromal                  | her2_tumor       | ERBB2;EPCAM                |               60 |          4.93333  |
+| tumor_stroma_boundary    | tumor_epithelial | EPCAM;KRT8;ERBB2           |              693 |         50.3179   |
+| tumor_stroma_boundary    | stromal          | LUM;ACTA2                  |              693 |         14.1775   |
+| tumor_stroma_boundary    | immune           | CD3D;CD3E;CD8A;MS4A1;PTPRC |              693 |          0.544012 |
+| tumor_stroma_boundary    | macrophage       | CD68;CD163;MRC1;C1QA       |              693 |          3.92352  |
+| tumor_stroma_boundary    | t_cell           | CD3D;CD3E;CD4;CD8A;GZMB    |              693 |          0.924964 |
+| tumor_stroma_boundary    | her2_tumor       | ERBB2;EPCAM                |              693 |         67.5433   |
+| within_ductal            | tumor_epithelial | EPCAM;KRT8;ERBB2           |              269 |         85.3309   |
+| within_ductal            | stromal          | LUM;ACTA2                  |              269 |         24.7193   |
+| within_ductal            | immune           | CD3D;CD3E;CD8A;MS4A1;PTPRC |              269 |          0.687732 |
+| within_ductal            | macrophage       | CD68;CD163;MRC1;C1QA       |              269 |          3.86896  |
+| within_ductal            | t_cell           | CD3D;CD3E;CD4;CD8A;GZMB    |              269 |          1.25576  |
+| within_ductal            | her2_tumor       | ERBB2;EPCAM                |              269 |        109.617    |
+| within_immune            | tumor_epithelial | EPCAM;KRT8;ERBB2           |              311 |          9.07717  |
+| within_immune            | stromal          | LUM;ACTA2                  |              311 |         15.5145   |
+| within_immune            | immune           | CD3D;CD3E;CD8A;MS4A1;PTPRC |              311 |          3.30547  |
+| within_immune            | macrophage       | CD68;CD163;MRC1;C1QA       |              311 |          8.56511  |
+| within_immune            | t_cell           | CD3D;CD3E;CD4;CD8A;GZMB    |              311 |          4.05016  |
+| within_immune            | her2_tumor       | ERBB2;EPCAM                |              311 |         11.6109   |
+| within_stromal           | tumor_epithelial | EPCAM;KRT8;ERBB2           |             2926 |          4.49533  |
+| within_stromal           | stromal          | LUM;ACTA2                  |             2926 |          9.39969  |
+| within_stromal           | immune           | CD3D;CD3E;CD8A;MS4A1;PTPRC |             2926 |          0.361722 |
+| within_stromal           | macrophage       | CD68;CD163;MRC1;C1QA       |             2926 |          3.29665  |
+| within_stromal           | t_cell           | CD3D;CD3E;CD4;CD8A;GZMB    |             2926 |          0.61702  |
+| within_stromal           | her2_tumor       | ERBB2;EPCAM                |             2926 |          5.91165  |
+| within_tumor             | tumor_epithelial | EPCAM;KRT8;ERBB2           |             1372 |        134.085    |
+| within_tumor             | stromal          | LUM;ACTA2                  |             1372 |         11.0605   |
+| within_tumor             | immune           | CD3D;CD3E;CD8A;MS4A1;PTPRC |             1372 |          0.603207 |
+| within_tumor             | macrophage       | CD68;CD163;MRC1;C1QA       |             1372 |          3.68112  |
+| within_tumor             | t_cell           | CD3D;CD3E;CD4;CD8A;GZMB    |             1372 |          1.06429  |
+| within_tumor             | her2_tumor       | ERBB2;EPCAM                |             1372 |        183.998    |

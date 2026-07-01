@@ -1,0 +1,30 @@
+{
+  "data": {
+    "prepared_path": "data/processed/cytassist_xenium_rep2_common297/prepared_xenium_gt_radius55.pt"
+  },
+  "model": {
+    "latent_dim": 96,
+    "hidden_dim": 192,
+    "patch_size": 32,
+    "dropout": 0.05,
+    "loss_expr_weight": 1.0,
+    "loss_prop_weight": 1.0,
+    "loss_sparse_weight": 0.01,
+    "loss_spatial_weight": 0.01,
+    "loss_contrast_weight": 0.02,
+    "loss_uncertainty_weight": 0.05,
+    "loss_boundary_weight": 0.05,
+    "boundary_temperature": 0.5
+  },
+  "training": {
+    "steps": 250,
+    "batch_size": 512,
+    "eval_batch_size": 512,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0,
+    "seed": 17,
+    "device": "cuda"
+  },
+  "predictions": {}
+}

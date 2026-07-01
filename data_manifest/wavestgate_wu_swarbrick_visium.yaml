@@ -1,0 +1,64 @@
+dataset_id: wavestgate_wu_swarbrick_visium
+description: >
+  Wu/Swarbrick human breast cancer spatial transcriptomics atlas for
+  independent Visium-scale validation. The Zenodo record contains processed raw
+  and filtered count matrices, Space Ranger spatial files, H&E/annotation image
+  documentation, and clinical/pathology metadata for six primary breast cancers
+  profiled with 10x Genomics Visium.
+root_dir: data/raw/wavestgate_wu_swarbrick_visium
+sources:
+  - name: zenodo_wu_swarbrick_spatial_transcriptomics
+    url: https://zenodo.org/records/4739739
+    doi: 10.5281/zenodo.4739739
+    license: CC-BY-4.0
+    notes: Published Zenodo dataset for Wu et al. 2021, A single-cell and spatially resolved atlas of human breast cancers.
+items:
+  - id: wu_filtered_count_matrices
+    dataset: wu_swarbrick_visium_atlas
+    role: external_visium_atlas
+    url: https://zenodo.org/api/records/4739739/files/filtered_count_matrices.tar.gz/content
+    path: zenodo/filtered_count_matrices.tar.gz
+    expected_bytes: 155703418
+    md5: ea1220f0606c4d4e9307468fb2d5427a
+    required: true
+    category: visium_expression
+    unpack: tar.gz
+  - id: wu_spatial
+    dataset: wu_swarbrick_visium_atlas
+    role: external_visium_atlas
+    url: https://zenodo.org/api/records/4739739/files/spatial.tar.gz/content
+    path: zenodo/spatial.tar.gz
+    expected_bytes: 54282871
+    md5: 29b02ae433d459d19dc52b75a529e8e9
+    required: true
+    category: visium_spatial
+    unpack: tar.gz
+  - id: wu_metadata
+    dataset: wu_swarbrick_visium_atlas
+    role: external_visium_atlas
+    url: https://zenodo.org/api/records/4739739/files/metadata.tar.gz/content
+    path: zenodo/metadata.tar.gz
+    expected_bytes: 217533
+    md5: 1d0b34ead70635c094ac74ac58a88d68
+    required: true
+    category: clinical_pathology_metadata
+    unpack: tar.gz
+  - id: wu_raw_count_matrices
+    dataset: wu_swarbrick_visium_atlas
+    role: external_visium_atlas
+    url: https://zenodo.org/api/records/4739739/files/raw_count_matrices.tar.gz/content
+    path: zenodo/raw_count_matrices.tar.gz
+    expected_bytes: 252891138
+    md5: f332ba383872dd74a27db67fcbfcd900
+    required: false
+    category: visium_raw_expression
+    unpack: tar.gz
+  - id: wu_images_pdf
+    dataset: wu_swarbrick_visium_atlas
+    role: external_visium_atlas
+    url: https://zenodo.org/api/records/4739739/files/images.pdf/content
+    path: zenodo/images.pdf
+    expected_bytes: 457685417
+    md5: 7a44782b0c376e5b4cb8bb1127821e6f
+    required: false
+    category: histology_annotation_images

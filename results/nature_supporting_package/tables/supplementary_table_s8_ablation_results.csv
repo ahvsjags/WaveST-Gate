@@ -1,0 +1,13 @@
+ablation,jsd,delta_vs_full_jsd,spotwise_cosine,delta_vs_full_spotwise_cosine,mean_celltype_pearson,delta_vs_full_mean_celltype_pearson,uncertainty_error_pearson,delta_vs_full_uncertainty_error_pearson
+full,0.02845,0.0,0.9854,0.0,0.8335,0.0,0.4863,0.0
+no_wavelet_cnn_replacement,0.03113,0.002676,0.9843,-0.001125,0.8147,-0.01886,0.4763,-0.01005
+no_image_branch,0.02771,-0.0007441,0.9878,0.002392,0.8437,0.01021,0.4062,-0.08011
+no_celltype_agents,0.03148,0.003024,0.9793,-0.006086,0.8104,-0.02315,0.3927,-0.09364
+no_gate_mean_fusion,0.03711,0.008658,0.9804,-0.005064,0.7793,-0.05417,0.4486,-0.03777
+raw_gate_without_uncertainty,0.03013,0.001672,0.9856,0.0001304,0.8214,-0.01215,-0.185,-0.6713
+no_boundary_loss,0.03217,0.00372,0.9838,-0.001579,0.822,-0.01152,0.4083,-0.078
+normal_smoothness_only,0.02845,-8.179e-06,0.986,0.0006174,0.8319,-0.001583,0.4867,0.0003841
+no_local_refinement,0.02935,0.0008943,0.9847,-0.000754,0.8219,-0.01157,0.4138,-0.07251
+expression_only,0.03127,0.002812,0.9825,-0.002902,0.8172,-0.0163,0.5247,0.0384
+image_only,0.1907,0.1622,0.7849,-0.2005,0.05537,-0.7781,0.08817,-0.3982
+reference_only,0.1933,0.1649,0.7853,-0.2001,-0.01153,-0.845,0.0,
