@@ -4,5 +4,8 @@ artifacts/
 test-results/
 playwright-report/
 .bin/
+runtime/
+.venv/
 *.tsbuildinfo
 .wavest-mdt-server.pid
+.wavest-mdt-api.pid

@@ -20,6 +20,14 @@ const LAYER_COLORS: Record<LayerKey, string> = {
 }
 
 type Opinion = { id: number; role: 'pathology' | 'oncology' | 'molecular'; textZh: string; textEn: string; time: string }
+type BackendHealth = { status: string; checkpointAvailable: boolean; cudaAvailable: boolean; device?: string; deviceName?: string; batchSize?: number }
+type InferenceJob = { id: string; status: 'queued' | 'running' | 'complete' | 'failed'; stage: string; progress: number; error?: string }
+type UploadBundle = { caseName: string; heImage: File; expression: File; coordinates: File; reference: File }
+
+const LOCAL_API_BASE = (() => {
+  const { hostname, protocol } = window.location
+  return hostname === 'localhost' || hostname === '127.0.0.1' ? `${protocol}//${hostname}:8010/api` : null
+})()
 
 const INITIAL_OPINIONS: Opinion[] = [
   { id: 1, role: 'pathology', textZh: '肿瘤-基质交界保存清楚，建议重点复核右侧高不确定区域。', textEn: 'The tumour-stroma interface is preserved; focused review is recommended for the right high-uncertainty region.', time: '09:24' },
@@ -27,6 +35,7 @@ const INITIAL_OPINIONS: Opinion[] = [
 ]
 
 function formatPercent(value: number) { return `${(value * 100).toFixed(value > 0.1 ? 1 : 2)}%` }
+function formatMetric(value: number | null, suffix = '') { return value === null ? '—' : `${value}${suffix}` }
 
 function downloadJson(filename: string, payload: unknown) {
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
@@ -71,7 +80,9 @@ function App() {
   const [reportSigned, setReportSigned] = useState(false)
   const [toast, setToast] = useState('')
   const [importOpen, setImportOpen] = useState(false)
-  const [importFiles, setImportFiles] = useState<string[]>([])
+  const [backend, setBackend] = useState<BackendHealth | null>(null)
+  const [backendChecked, setBackendChecked] = useState(false)
+  const [job, setJob] = useState<InferenceJob | null>(null)
   const [search, setSearch] = useState('')
   const copy = useCopy(language)
 
@@ -83,7 +94,54 @@ function App() {
       })
       .then(setData)
       .catch(() => setToast(language === 'zh' ? '空间数据加载失败' : 'Spatial data failed to load'))
-  }, [language])
+  }, [])
+
+  useEffect(() => {
+    if (!LOCAL_API_BASE) {
+      setBackendChecked(true)
+      return
+    }
+    fetch(`${LOCAL_API_BASE}/health`)
+      .then((response) => response.ok ? response.json() : Promise.reject(new Error('Local API unavailable')))
+      .then((health: BackendHealth) => setBackend(health))
+      .catch(() => setBackend(null))
+      .finally(() => setBackendChecked(true))
+  }, [])
+
+  useEffect(() => {
+    if (!LOCAL_API_BASE || !job || job.status === 'complete' || job.status === 'failed') return
+    let cancelled = false
+    const sync = async () => {
+      try {
+        const response = await fetch(`${LOCAL_API_BASE}/jobs/${job.id}`)
+        if (!response.ok) throw new Error('Local inference job is unavailable')
+        const next: InferenceJob = await response.json()
+        if (cancelled) return
+        if (next.status === 'complete') {
+          const resultResponse = await fetch(`${LOCAL_API_BASE}/jobs/${next.id}/result`)
+          if (!resultResponse.ok) throw new Error('Local inference result is unavailable')
+          const result: SpatialDemo = await resultResponse.json()
+          if (cancelled) return
+          setData(result)
+          setSelectedSpot(null)
+          setLayer('dominant')
+          setView('atlas')
+          setJob(next)
+          setToast(language === 'zh' ? '本地 GPU 推理完成，结果已载入工作站。' : 'Local GPU inference completed and results are loaded.')
+        } else if (next.status === 'failed') {
+          setJob(next)
+          setToast(next.error ?? (language === 'zh' ? '本地推理未完成。' : 'Local inference did not complete.'))
+        } else {
+          setJob(next)
+        }
+      } catch (error) {
+        if (!cancelled) setToast(error instanceof Error ? error.message : 'Local inference status could not be read.')
+      }
+    }
+    void sync()
+    const timer = window.setInterval(() => void sync(), 1800)
+    return () => { cancelled = true; window.clearInterval(timer) }
+  }, [job?.id, job?.status, language])
 
   useEffect(() => {
     if (!toast) return
@@ -128,6 +186,25 @@ function App() {
     if (guideStep === 3) setGuideStep(4)
   }
 
+  const submitLocalCase = async (bundle: UploadBundle) => {
+    if (!LOCAL_API_BASE) throw new Error(language === 'zh' ? '请在本机完整工作站中启动本地推理服务。' : 'Start the local inference service in the full workstation.')
+    const payload = new FormData()
+    payload.append('case_name', bundle.caseName)
+    payload.append('h_e_image', bundle.heImage)
+    payload.append('expression', bundle.expression)
+    payload.append('coordinates', bundle.coordinates)
+    payload.append('reference', bundle.reference)
+    const response = await fetch(`${LOCAL_API_BASE}/jobs`, { method: 'POST', body: payload })
+    if (!response.ok) {
+      const detail = await response.json().catch(() => null)
+      throw new Error(detail?.detail ?? 'Local inference job could not be created.')
+    }
+    const next: InferenceJob = await response.json()
+    setJob(next)
+    setImportOpen(false)
+    setToast(language === 'zh' ? '本地推理任务已创建；数据仅保留在此计算机。' : 'Local inference job created; data remains on this computer.')
+  }
+
   if (!data) {
     return (
       <main className="loading-screen">
@@ -151,7 +228,7 @@ function App() {
           <strong>{data.case.id}</strong>
           <span className="context-divider" />
           <span>{language === 'zh' ? data.case.titleZh : data.case.title}</span>
-          <span className="status-pill"><BadgeCheck size={14} />{copy.dataReady}</span>
+          <span className="status-pill"><BadgeCheck size={14} />{job && job.status !== 'complete' && job.status !== 'failed' ? `${job.progress}% · ${job.stage}` : copy.dataReady}</span>
         </div>
         <div className="top-actions">
           <span className="demo-pill"><Globe2 size={13} />{copy.publicDemo}</span>
@@ -190,7 +267,7 @@ function App() {
 
         <aside className="control-panel">
           {view === 'cases' ? (
-            <CaseWorklist copy={copy} language={language} search={search} setSearch={setSearch} onImport={() => setImportOpen(true)} />
+            <CaseWorklist copy={copy} language={language} search={search} setSearch={setSearch} onImport={() => setImportOpen(true)} backend={backend} backendChecked={backendChecked} job={job} />
           ) : (
             <>
               <div className="panel-heading">
@@ -210,7 +287,7 @@ function App() {
                 <h2><Layers3 size={16} />{copy.layer}</h2>
                 <div className="layer-list">
                   {(['dominant', 'tumour', 'immune', 'stroma', 'uncertainty', 'niche'] as LayerKey[]).map((key) => (
-                    <button key={key} className={layer === key ? 'active' : ''} onClick={() => { setLayer(key); setView('atlas') }} data-testid={`layer-${key}`}>
+                    <button key={key} className={layer === key ? 'active' : ''} onClick={() => { setLayer(key); setView('atlas') }} disabled={key === 'niche' && data.inference?.nicheAvailable === false} data-testid={`layer-${key}`}>
                       <span className="swatch" style={{ background: LAYER_COLORS[key] }} />
                       <span>{layerLabel(key)}</span>{layer === key && <Check size={15} />}
                     </button>
@@ -220,7 +297,7 @@ function App() {
               <div className="dataset-facts">
                 <div><strong>{data.aggregate.spots.toLocaleString()}</strong><span>spots</span></div>
                 <div><strong>{data.aggregate.cellStates}</strong><span>cell states</span></div>
-                <div><strong>{data.aggregate.supervisedSpots}</strong><span>matched GT</span></div>
+                <div><strong>{data.inference?.mode === 'live_local' ? '—' : data.aggregate.supervisedSpots}</strong><span>matched GT</span></div>
               </div>
             </>
           )}
@@ -245,15 +322,16 @@ function App() {
             selectedSpot={selectedSpot}
             onSelectSpot={(spot) => { setSelectedSpot(spot); if (guideStep === 2) setToast(language === 'zh' ? '高风险区域已定位' : 'High-risk region located') }}
             cameraResetKey={cameraResetKey}
+            tissueImageUrl={data.inference?.tissueEndpoint && LOCAL_API_BASE ? `${LOCAL_API_BASE}${data.inference.tissueEndpoint}` : undefined}
           />
           <div className="scene-legend">
             <span className="swatch" style={{ background: LAYER_COLORS[layer] }} />
-            <strong>{layerLabel(layer)}</strong><span>{copy.demoCase}</span>
+            <strong>{layerLabel(layer)}</strong><span>{data.inference?.mode === 'live_local' ? (language === 'zh' ? '本地推理结果' : 'Local inference result') : copy.demoCase}</span>
           </div>
           <div className="scene-metrics">
-            <div><span>ρ uncertainty/error</span><strong>{data.aggregate.uncertaintyCorrelation}</strong></div>
-            <div><span>boundary/interior</span><strong>{data.aggregate.boundaryJumpRatio}×</strong></div>
-            <div><span>calibration bins</span><strong>{data.aggregate.calibrationBinCorrelation}</strong></div>
+            <div><span>ρ uncertainty/error</span><strong>{formatMetric(data.aggregate.uncertaintyCorrelation)}</strong></div>
+            <div><span>boundary/interior</span><strong>{formatMetric(data.aggregate.boundaryJumpRatio, '×')}</strong></div>
+            <div><span>calibration bins</span><strong>{formatMetric(data.aggregate.calibrationBinCorrelation)}</strong></div>
           </div>
         </section>
 
@@ -276,13 +354,13 @@ function App() {
 
       <footer className="safety-strip"><ShieldCheck size={14} /><span>{copy.researchOnly}</span><span className="safety-separator" /><span>{data.case.model}</span></footer>
 
-      {importOpen && <ImportDialog copy={copy} files={importFiles} setFiles={setImportFiles} onClose={() => setImportOpen(false)} language={language} />}
+      {importOpen && <ImportDialog copy={copy} language={language} backend={backend} backendChecked={backendChecked} onClose={() => setImportOpen(false)} onSubmit={submitLocalCase} />}
       {toast && <div className="toast" role="status"><BadgeCheck size={17} />{toast}</div>}
     </div>
   )
 }
 
-function CaseWorklist({ copy, language, search, setSearch, onImport }: { copy: ReturnType<typeof useCopy>; language: Language; search: string; setSearch: (value: string) => void; onImport: () => void }) {
+function CaseWorklist({ copy, language, search, setSearch, onImport, backend, backendChecked, job }: { copy: ReturnType<typeof useCopy>; language: Language; search: string; setSearch: (value: string) => void; onImport: () => void; backend: BackendHealth | null; backendChecked: boolean; job: InferenceJob | null }) {
   const cases = [
     { id: 'DEMO-ST-001', zh: '肿瘤空间图谱', en: 'Tumour spatial atlas', status: copy.active, active: true },
     { id: 'DEMO-LU-002', zh: '肺肿瘤参考病例', en: 'Lung tumour reference', status: copy.queued, active: false },
@@ -293,6 +371,12 @@ function CaseWorklist({ copy, language, search, setSearch, onImport }: { copy: R
       <div className="panel-heading"><span>Workspace</span><strong>{copy.worklist}</strong><p>3 {copy.cases.toLowerCase()}</p></div>
       <label className="search-field"><Search size={16} /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder={copy.search} /></label>
       <button className="primary-button full" onClick={onImport}><CloudUpload size={17} />{copy.importCase}</button>
+      <div className={`inference-status ${backend?.checkpointAvailable && backend?.cudaAvailable ? 'ready' : ''}`}>
+        <div><BrainCircuit size={16} /><span>{language === 'zh' ? '本地推理服务' : 'Local inference service'}</span></div>
+        <strong>{!backendChecked ? (language === 'zh' ? '检查中' : 'Checking') : backend?.checkpointAvailable && backend?.cudaAvailable ? (language === 'zh' ? 'GPU 已就绪' : 'GPU ready') : (language === 'zh' ? '仅演示模式' : 'Demo only')}</strong>
+        {job && <small>{job.progress}% · {job.stage}</small>}
+        {backend?.deviceName && <small>{backend.deviceName} · batch {backend.batchSize}</small>}
+      </div>
       <div className="case-list">
         {cases.map((item) => <button key={item.id} className={item.active ? 'active' : ''} disabled={!item.active}><span><strong>{item.id}</strong><em>{language === 'zh' ? item.zh : item.en}</em></span><small>{item.status}</small></button>)}
       </div>
@@ -347,12 +431,45 @@ function AuditPanel({ copy, data, language }: { copy: ReturnType<typeof useCopy>
   </div>
 }
 
-function ImportDialog({ copy, files, setFiles, onClose, language }: { copy: ReturnType<typeof useCopy>; files: string[]; setFiles: (files: string[]) => void; onClose: () => void; language: Language }) {
-  return <div className="modal-backdrop" role="dialog" aria-modal="true"><div className="import-dialog"><header><div><span>WaveST-MDT</span><h2>{copy.importCase}</h2></div><button className="icon-button" onClick={onClose}><X size={19} /></button></header>
-    <label className="drop-zone"><CloudUpload size={30} /><strong>{language === 'zh' ? '选择去标识化病例文件' : 'Select de-identified case files'}</strong><span>H&E WSI · expression matrix · spot coordinates · reference atlas</span><input type="file" multiple onChange={(event) => setFiles(Array.from(event.target.files ?? []).map((file) => file.name))} /></label>
-    <div className="file-queue">{files.length ? files.map((file) => <div key={file}><FileCheck2 size={16} /><span>{file}</span><Check size={15} /></div>) : <p>{language === 'zh' ? '尚未选择文件' : 'No files selected'}</p>}</div>
-    <footer><span><LockKeyhole size={14} />{language === 'zh' ? '文件仅在本地原型中读取' : 'Files remain in the local prototype'}</span><button className="primary-button" disabled={!files.length} onClick={() => { onClose(); setFiles([]) }}>{language === 'zh' ? '进入质量检查' : 'Continue to QC'}</button></footer>
-  </div></div>
+function ImportDialog({ copy, onClose, language, backend, backendChecked, onSubmit }: { copy: ReturnType<typeof useCopy>; onClose: () => void; language: Language; backend: BackendHealth | null; backendChecked: boolean; onSubmit: (bundle: UploadBundle) => Promise<void> }) {
+  const [caseName, setCaseName] = useState('local-spatial-case')
+  const [heImage, setHeImage] = useState<File | null>(null)
+  const [expression, setExpression] = useState<File | null>(null)
+  const [coordinates, setCoordinates] = useState<File | null>(null)
+  const [reference, setReference] = useState<File | null>(null)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
+  const ready = Boolean(caseName.trim() && heImage && expression && coordinates && reference)
+  const localReady = Boolean(backend?.checkpointAvailable && backend?.cudaAvailable)
+
+  const submit = async () => {
+    if (!heImage || !expression || !coordinates || !reference) return
+    setSubmitting(true)
+    setError('')
+    try {
+      await onSubmit({ caseName: caseName.trim(), heImage, expression, coordinates, reference })
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : 'Unable to submit the local inference job.')
+      setSubmitting(false)
+    }
+  }
+
+  const fileName = (file: File | null) => file ? file.name : (language === 'zh' ? '未选择' : 'Not selected')
+  return <div className="modal-backdrop" role="dialog" aria-modal="true"><form className="import-dialog" onSubmit={(event) => { event.preventDefault(); void submit() }}><header><div><span>WaveST-MDT · local inference</span><h2>{copy.importCase}</h2></div><button className="icon-button" type="button" onClick={onClose}><X size={19} /></button></header>
+    <div className={`import-service-notice ${localReady ? 'ready' : ''}`}><BrainCircuit size={18} /><div><strong>{localReady ? (language === 'zh' ? '本地 GPU 推理已连接' : 'Local GPU inference connected') : (language === 'zh' ? '未连接本地推理服务' : 'Local inference service unavailable')}</strong><span>{localReady ? `${backend?.deviceName ?? backend?.device} · batch ${backend?.batchSize}` : (backendChecked ? (language === 'zh' ? '公开页面仅展示去标识化结果。' : 'The public page only displays de-identified results.') : (language === 'zh' ? '正在检查服务。' : 'Checking local service.'))}</span></div></div>
+    <div className="import-form-body">
+      <label className="case-name-field"><span>{language === 'zh' ? '病例标识' : 'Case identifier'}</span><input value={caseName} onChange={(event) => setCaseName(event.target.value)} maxLength={80} required /></label>
+      <div className="file-contract-grid">
+        <label><span>01 · H&E {language === 'zh' ? '图像' : 'image'}</span><i className="file-select"><CloudUpload size={13} />{language === 'zh' ? '选择文件' : 'Choose file'}</i><input type="file" accept=".png,.jpg,.jpeg,.tif,.tiff" onChange={(event) => setHeImage(event.target.files?.[0] ?? null)} required /><small>{fileName(heImage)}</small></label>
+        <label><span>02 · {language === 'zh' ? '表达矩阵' : 'Expression matrix'}</span><i className="file-select"><CloudUpload size={13} />{language === 'zh' ? '选择文件' : 'Choose file'}</i><input type="file" accept=".csv,.tsv,.txt" onChange={(event) => setExpression(event.target.files?.[0] ?? null)} required /><small>{fileName(expression)}</small></label>
+        <label><span>03 · {language === 'zh' ? '空间坐标 CSV' : 'Spatial coordinates CSV'}</span><i className="file-select"><CloudUpload size={13} />{language === 'zh' ? '选择文件' : 'Choose file'}</i><input type="file" accept=".csv" onChange={(event) => setCoordinates(event.target.files?.[0] ?? null)} required /><small>{fileName(coordinates)}</small></label>
+        <label><span>04 · {language === 'zh' ? '参考图谱' : 'Reference atlas'}</span><i className="file-select"><CloudUpload size={13} />{language === 'zh' ? '选择文件' : 'Choose file'}</i><input type="file" accept=".csv,.tsv,.txt" onChange={(event) => setReference(event.target.files?.[0] ?? null)} required /><small>{fileName(reference)}</small></label>
+      </div>
+      <div className="import-contract"><FileCheck2 size={16} /><span>{language === 'zh' ? '坐标表必须包含 spot_id、x 和 y；模型输出是研究用途的空间推理结果。' : 'The coordinate CSV must contain spot_id, x and y; model outputs are research-use spatial inferences.'}</span></div>
+      {error && <p className="import-error" role="alert">{error}</p>}
+    </div>
+    <footer><span><LockKeyhole size={14} />{language === 'zh' ? '上传数据仅写入本机运行目录，不发送至公开网站。' : 'Uploaded data is written only to the local runtime directory and never sent to the public site.'}</span><button className="primary-button" type="submit" disabled={!ready || !localReady || submitting}>{submitting ? (language === 'zh' ? '正在创建任务' : 'Creating job') : (language === 'zh' ? '提交本地推理' : 'Run local inference')}</button></footer>
+  </form></div>
 }
 
 export default App

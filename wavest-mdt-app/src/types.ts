@@ -34,9 +34,15 @@ export interface SpatialDemo {
     supervisedSpots: number
     typedCells: number
     meanProportions: number[]
-    uncertaintyCorrelation: number
-    boundaryJumpRatio: number
-    calibrationBinCorrelation: number
+    uncertaintyCorrelation: number | null
+    boundaryJumpRatio: number | null
+    calibrationBinCorrelation: number | null
   }
   spots: SpatialSpot[]
+  inference?: {
+    mode: 'demo' | 'live_local'
+    nicheAvailable: boolean
+    tissueEndpoint?: string | null
+    message?: string
+  }
 }

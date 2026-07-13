@@ -15,7 +15,7 @@ from wavestgate.data.assemble import BatchMetadata
 from wavestgate.data.prepare_dataset import load_prepared_dataset
 from wavestgate.models.types import WaveSTGateBatch, WaveSTGateConfig
 from wavestgate.models.wavestgate import WaveSTGate
-from wavestgate.training.train_real import _run_model_batched
+from wavestgate.training.train_real import _slice_batch
 
 
 def _load_checkpoint_model(checkpoint_path: str | Path, device: torch.device) -> tuple[WaveSTGate, dict]:
@@ -79,49 +79,123 @@ def align_batch_to_checkpoint(
     return aligned_batch, target_genes, target_cell_types, missing_genes + missing_cell_types
 
 
+def _predict_batched_to_cpu(
+    model: WaveSTGate,
+    batch: WaveSTGateBatch,
+    batch_size: int,
+) -> dict[str, torch.Tensor | None]:
+    """Run memory-bounded inference and retain only exportable spot-level outputs."""
+
+    if batch_size < 1:
+        raise ValueError("batch_size must be positive")
+
+    chunks: dict[str, list[torch.Tensor]] = {
+        "proportions": [],
+        "gates": [],
+        "uncertainty": [],
+        "agent_attention": [],
+        "modality_reliability": [],
+        "niche_logits": [],
+    }
+    squared_error = 0.0
+    error_elements = 0
+    n_spots = batch.st_expression.size(0)
+
+    with torch.inference_mode():
+        for start in range(0, n_spots, batch_size):
+            indices = torch.arange(start, min(start + batch_size, n_spots), device=batch.st_expression.device)
+            chunk = _slice_batch(batch, indices)
+            output = model(chunk)
+            chunks["proportions"].append(output.proportions.detach().cpu())
+            chunks["gates"].append(output.gate_weights.detach().cpu())
+            chunks["agent_attention"].append(output.agent_attention.detach().cpu())
+            if output.spot_uncertainty is not None:
+                chunks["uncertainty"].append(output.spot_uncertainty.detach().reshape(-1).cpu())
+            if output.modality_reliability is not None:
+                chunks["modality_reliability"].append(output.modality_reliability.detach().cpu())
+            if output.niche_logits is not None:
+                chunks["niche_logits"].append(output.niche_logits.detach().cpu())
+
+            squared_error += float(F.mse_loss(
+                torch.log1p(output.reconstructed_expression.clamp_min(0.0)),
+                torch.log1p(chunk.st_expression.clamp_min(0.0)),
+                reduction="sum",
+            ).item())
+            error_elements += output.reconstructed_expression.numel()
+            del output, chunk
+            if batch.st_expression.device.type == "cuda":
+                torch.cuda.empty_cache()
+
+    values: dict[str, torch.Tensor | None] = {
+        key: torch.cat(value, dim=0) if value else None
+        for key, value in chunks.items()
+    }
+    values["expression_log1p_rmse"] = torch.tensor((squared_error / max(error_elements, 1)) ** 0.5)
+    return values
+
+
 def predict_aligned(
     checkpoint_path: str | Path,
     prepared_path: str | Path,
     output_dir: str | Path,
-    batch_size: int = 512,
+    batch_size: int = 8,
     device: str = "cuda",
 ) -> dict[str, object]:
     run_device = torch.device("cuda" if device == "cuda" and torch.cuda.is_available() else "cpu")
     model, checkpoint = _load_checkpoint_model(checkpoint_path, run_device)
     batch, metadata, extra = load_prepared_dataset(prepared_path, device=run_device)
     aligned_batch, target_genes, target_cell_types, missing = align_batch_to_checkpoint(batch, metadata, checkpoint)
-    with torch.no_grad():
-        output = _run_model_batched(model, aligned_batch, batch_size)
+    output = _predict_batched_to_cpu(model, aligned_batch, batch_size)
 
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(output.proportions.cpu().numpy(), index=metadata.spot_ids, columns=target_cell_types).to_csv(
+    proportions = output["proportions"]
+    gates = output["gates"]
+    uncertainty = output["uncertainty"]
+    attention = output["agent_attention"]
+    if proportions is None or gates is None or uncertainty is None or attention is None:
+        raise RuntimeError("WaveST-Gate did not return the required prediction outputs")
+
+    pd.DataFrame(proportions.numpy(), index=metadata.spot_ids, columns=target_cell_types).to_csv(
         output_dir / "predicted_proportions.csv",
         index_label="spot_id",
     )
-    pd.DataFrame(output.gate_weights.cpu().numpy(), index=metadata.spot_ids, columns=["image", "expression", "reference"]).to_csv(
+    pd.DataFrame(gates.numpy(), index=metadata.spot_ids, columns=["image", "expression", "reference"]).to_csv(
         output_dir / "gate_weights.csv",
         index_label="spot_id",
     )
-    pd.DataFrame(output.spot_uncertainty.cpu().reshape(-1).numpy(), index=metadata.spot_ids, columns=["spot_uncertainty"]).to_csv(
+    pd.DataFrame(uncertainty.numpy(), index=metadata.spot_ids, columns=["spot_uncertainty"]).to_csv(
         output_dir / "spot_uncertainty.csv",
         index_label="spot_id",
     )
-    pd.DataFrame(output.agent_attention.cpu().numpy(), index=metadata.spot_ids, columns=target_cell_types).to_csv(
+    pd.DataFrame(attention.numpy(), index=metadata.spot_ids, columns=target_cell_types).to_csv(
         output_dir / "agent_attention.csv",
         index_label="spot_id",
     )
-    expr_rmse = torch.sqrt(F.mse_loss(torch.log1p(output.reconstructed_expression.cpu()), torch.log1p(aligned_batch.st_expression.cpu()))).item()
+    modality_reliability = output["modality_reliability"]
+    if modality_reliability is not None:
+        pd.DataFrame(modality_reliability.numpy(), index=metadata.spot_ids, columns=["image", "expression", "reference"]).to_csv(
+            output_dir / "modality_reliability.csv",
+            index_label="spot_id",
+        )
+    niche_logits = output["niche_logits"]
+    if niche_logits is not None:
+        pd.DataFrame(niche_logits.numpy(), index=metadata.spot_ids).to_csv(
+            output_dir / "niche_logits.csv",
+            index_label="spot_id",
+        )
     metrics = {
         "prepared_path": str(prepared_path),
         "num_spots": len(metadata.spot_ids),
         "num_target_genes": len(target_genes),
         "num_missing_alignment_items": len(missing),
-        "expression_log1p_rmse": float(expr_rmse),
-        "mean_spot_uncertainty": float(output.spot_uncertainty.mean().item()),
-        "mean_image_gate": float(output.gate_weights[:, 0].mean().item()),
-        "mean_expression_gate": float(output.gate_weights[:, 1].mean().item()),
-        "mean_reference_gate": float(output.gate_weights[:, 2].mean().item()),
+        "batch_size": batch_size,
+        "device": str(run_device),
+        "expression_log1p_rmse": float(output["expression_log1p_rmse"].item()),
+        "mean_spot_uncertainty": float(uncertainty.mean().item()),
+        "mean_image_gate": float(gates[:, 0].mean().item()),
+        "mean_expression_gate": float(gates[:, 1].mean().item()),
+        "mean_reference_gate": float(gates[:, 2].mean().item()),
     }
     with (output_dir / "aligned_prediction_metrics.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(metrics.keys()))
@@ -144,7 +218,7 @@ def main() -> None:
     parser.add_argument("--checkpoint", required=True)
     parser.add_argument("--prepared", required=True)
     parser.add_argument("--output-dir", required=True)
-    parser.add_argument("--batch-size", type=int, default=512)
+    parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--device", default="cuda", choices=["cpu", "cuda"])
     args = parser.parse_args()
     metrics = predict_aligned(args.checkpoint, args.prepared, args.output_dir, args.batch_size, args.device)

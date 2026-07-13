@@ -19,6 +19,7 @@ interface TissueSceneProps {
   selectedSpot: SpatialSpot | null
   onSelectSpot: (spot: SpatialSpot) => void
   cameraResetKey: number
+  tissueImageUrl?: string
 }
 
 function CameraRig({ viewMode, resetKey }: { viewMode: ViewMode; resetKey: number }) {
@@ -32,8 +33,8 @@ function CameraRig({ viewMode, resetKey }: { viewMode: ViewMode; resetKey: numbe
   return null
 }
 
-function TissuePlane() {
-  const texture = useTexture(`${import.meta.env.BASE_URL}assets/tissue-lowres.png`)
+function TissuePlane({ tissueImageUrl }: { tissueImageUrl?: string }) {
+  const texture = useTexture(tissueImageUrl ?? `${import.meta.env.BASE_URL}assets/tissue-lowres.png`)
   texture.colorSpace = THREE.SRGBColorSpace
   texture.anisotropy = 8
   return (
@@ -149,7 +150,7 @@ export default function TissueScene(props: TissueSceneProps) {
         <directionalLight position={[5, 10, 3]} intensity={2.5} color="#fff1d5" castShadow />
         <directionalLight position={[-6, 4, -5]} intensity={1.15} color="#9dd9d4" />
         <Suspense fallback={null}>
-          <TissuePlane />
+          <TissuePlane tissueImageUrl={props.tissueImageUrl} />
         </Suspense>
         <SpatialInstances spots={props.spots} cellTypes={props.cellTypes} layer={props.layer} onSelectSpot={props.onSelectSpot} />
         {props.selectedSpot && <SelectedMarker spot={props.selectedSpot} />}
