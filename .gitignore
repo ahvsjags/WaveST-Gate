@@ -47,6 +47,10 @@ reports/
 *.jpg
 *.jpeg
 
+# De-identified WaveST-MDT demo textures are required by the public workstation.
+!wavest-mdt-app/public/assets/*.png
+!wavest-mdt-app/dist/assets/*.png
+
 # Keep the reproducibility/release evidence chain lightweight on GitHub.
 !results/
 results/*
